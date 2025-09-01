@@ -12,3 +12,4 @@ async def read_items():
 async def create_item(item: dict):
     created_item = await some_service_function(item)
     return created_item
+
