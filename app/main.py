@@ -25,40 +25,36 @@ templates = Jinja2Templates(directory=str(BASE_DIR / "templates"))
 
 @app.get("/", response_class=HTMLResponse)
 def home(request: Request):
-return templates.TemplateResponse("index.html", {
-"request": request,
-"img_url": None,
-"processed_url": None
+    return templates.TemplateResponse("index.html", {
+    "request": request,
+    "img_url": None,
+    "processed_url": None
 })
 
 
 @app.post("/api/upload", response_class=HTMLResponse)
 async def upload_image(request: Request, file: UploadFile = File(...)):
-# 占位：保存并原样返回，后续在此接入抠图/增强等AI处理
-content = await file.read()
-img = Image.open(io.BytesIO(content)).convert("RGB")
+    # 占位：保存并原样返回，后续在此接入抠图/增强等AI处理
+    content = await file.read() 
+    img = Image.open(io.BytesIO(content)).convert("RGB")
 
+    stem = Path(file.filename).stem
+    out_name = f"{stem}_orig.jpg"
+    out_path = UPLOAD_DIR / out_name
+    img.save(out_path, quality=95)
 
-stem = Path(file.filename).stem
-out_name = f"{stem}_orig.jpg"
-out_path = UPLOAD_DIR / out_name
-img.save(out_path, quality=95)
+    img_url = f"/static/uploads/{out_name}"
 
+    # 这里 processed_url 先用原图占位；后续替换为处理后图片
+    processed_url = img_url
 
-img_url = f"/static/uploads/{out_name}"
-
-
-# 这里 processed_url 先用原图占位；后续替换为处理后图片
-processed_url = img_url
-
-
-return templates.TemplateResponse("index.html", {
-"request": request,
-"img_url": img_url,
-"processed_url": processed_url
-})
+    return templates.TemplateResponse("index.html", {
+        "request": request,
+        "img_url": img_url,
+        "processed_url": processed_url
+    })
 
 
 @app.get("/api/ping")
 def ping():
-return {"ok": True, "msg": "pong"}
+    return {"ok": True, "msg": "pong"}
