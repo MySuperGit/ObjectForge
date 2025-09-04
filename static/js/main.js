@@ -1,40 +1,48 @@
-// 侧栏折叠/展开
-document.addEventListener('DOMContentLoaded', () => {
-const btn = document.getElementById('btnToggleSidebar');
-const sidebar = document.getElementById('sidebar');
-if (btn && sidebar){
-btn.addEventListener('click', () => {
-sidebar.classList.toggle('is-collapsed');
-btn.textContent = sidebar.classList.contains('is-collapsed') ? '⟩⟩' : '⟨⟨';
-});
-}
+// 1) Header 显隐（Claude 风格）：滚过 hero 哨兵后，上滚显示、下滚隐藏
+(() => {
+const header = document.getElementById('siteHeader');
+const sentinel = document.getElementById('headerSentinel');
+if (!header || !sentinel) return;
+let lastY = window.scrollY, showed = false;
+const toggle = (wantShow) => {
+if (wantShow === showed) return;
+showed = wantShow;
+header.classList.toggle('header--show', showed);
+header.classList.toggle('header--hidden', !showed);
+};
+const io = new IntersectionObserver(entries => {
+const past = !entries[0].isIntersecting; // 是否滚过触发点
+const down = window.scrollY > lastY; lastY = window.scrollY;
+if (!past) { toggle(false); return; }
+toggle(!down); // 过线：上滚显示、下滚隐藏
+}, {root:null, threshold:0});
+io.observe(sentinel);
+})();
 
 
-// 对比滑块
+// 2) 对比滑块（没有就静默退出）
+(() => {
 const range = document.getElementById('compareRange');
 const topLayer = document.getElementById('compareTop');
-if (range && topLayer){
-range.addEventListener('input', (e) => {
-const v = Number(e.target.value);
-topLayer.style.width = v + '%';
-});
-}
+if (!range || !topLayer) return;
+range.addEventListener('input', (e) => topLayer.style.width = Number(e.target.value) + '%');
+})();
 
 
-// 标签切换
+// 3) Tabs 切换（模板/灵感/图形库）
+(() => {
 const tabs = document.querySelectorAll('.of-tab');
-if (tabs.length){
-tabs.forEach(tab => {
-tab.addEventListener('click', () => {
-// nav状态
-document.querySelectorAll('.of-tab').forEach(t => t.classList.remove('is-active'));
-tab.classList.add('is-active');
-// 面板状态
-const id = tab.getAttribute('data-tab');
-document.querySelectorAll('.of-tabs__panel').forEach(p => p.classList.remove('is-active'));
-const panel = document.getElementById(id);
-if (panel){ panel.classList.add('is-active'); }
-});
-});
-}
-});
+const panels = document.querySelectorAll('.of-tabs__panel');
+if (!tabs.length || !panels.length) return;
+tabs.forEach(t => t.addEventListener('click', () => {
+tabs.forEach(x => x.classList.remove('is-active'));
+t.classList.add('is-active');
+panels.forEach(p => p.classList.remove('is-active'));
+const panel = document.getElementById(t.dataset.tab);
+if (panel) panel.classList.add('is-active');
+}));
+})();
+
+
+// 4) CSS 成功后移除 no-css（弱网兜底）
+window.addEventListener('load', () => document.body.classList.remove('no-css'));

@@ -1,68 +1,85 @@
 <!doctype html>
-<link rel="icon" href="/static/favicon.ico">
-<link rel="stylesheet" href="/static/css/style.css">
+</section>
 
+
+<!-- 次页面：左 AI 设计 / 右 介绍与信任（OpenAI/Remaker 混合信息页） -->
+<section id="design" class="grid-two grid-two--reverse" aria-label="AI 设计与介绍">
+<aside class="pane pane--left">
+<h2>AI 设计</h2>
+<ul class="cards cards--masonry">
+<li class="card">🎨 AI 海报 / 花字 <small>主题模板一键改</small></li>
+<li class="card">🧩 模板中心 <small>节日/商务/电商/教育</small></li>
+<li class="card">🖼️ 图文排版 <small>社媒多尺寸导出</small></li>
+<li class="card">🧠 AI 文案 <small>标题/描述/要点生成</small></li>
+<li class="card">📊 LivePPT <small>自动版式建议</small></li>
+<li class="card">🔖 Logo 墙 <small>客户与合作展示</small></li>
+</ul>
+</aside>
+<article class="pane pane--right intro">
+<h2>为什么选择 ObjectForge？</h2>
+<div class="intro__grid">
+<section class="intro__item"><h3>更快产出</h3><p>批量处理，端到端工作流，模板与预设复用，极大缩短素材交付时间。</p></section>
+<section class="intro__item"><h3>可控与可信</h3><p>隐私合规、权限与审计、版本回溯，适配企业协作与合规要求。</p></section>
+<section class="intro__item"><h3>开放与可扩展</h3><p>API/SDK、Gradio 实验室与模型即插即用；未来接入虚拟人/3D 空间。</p></section>
+</div>
+<div class="logos only-when-css" aria-label="客户 Logo 墙">
+<span class="logo-skeleton"></span><span class="logo-skeleton"></span><span class="logo-skeleton"></span>
+</div>
+</article>
+</section>
+
+
+<!-- 模板 / 灵感（保留原 tabs，可复用你已有的数据接入） -->
+<section id="templates" class="of-layer of-layer--tabs" aria-label="模板与灵感">
+<div class="of-tabs">
+<div class="of-tabs__nav" role="tablist">
+<button class="of-tab is-active" data-tab="tab-templates">模板</button>
+<button class="of-tab" data-tab="tab-inspire">灵感</button>
+<button class="of-tab" data-tab="tab-assets">图形库</button>
+</div>
+<div class="of-tabs__panel is-active" id="tab-templates">
 <div class="of-grid">
 <div class="of-card">电商主图 · 极简白底</div>
-<div class="of-card">节日海报 · 春节红金</div>
-<div class="of-card">证件照 · 蓝底 · 一键裁切</div>
+<div class="of-card">节日海报 · 红金</div>
+<div class="of-card">证件照 · 蓝底</div>
 <div class="of-card">社媒封面 · 旅行风</div>
-<div class="of-card">商务海报 · 科技蓝</div>
-<div class="of-card">新品主推 · 暗色高对比</div>
 </div>
 </div>
 <div class="of-tabs__panel" id="tab-inspire">
 <div class="of-grid">
 <div class="of-card">案例灵感 · 前后对比</div>
 <div class="of-card">光影库 · 产品高光</div>
-<div class="of-card">场景库 · 书房/厨房/户外</div>
+<div class="of-card">场景库 · 室内/户外</div>
 <div class="of-card">配色参考 · 冷暖对照</div>
 </div>
 </div>
 <div class="of-tabs__panel" id="tab-assets">
 <div class="of-grid">
-<div class="of-card">背景图库 · 纯色/渐变/纹理</div>
-<div class="of-card">贴纸/形状 · 装饰元素</div>
-<div class="of-card">图标 · 常用UI素材</div>
-<div class="of-card">字体示例 · 花字/标题</div>
-</div>
-</div>
-<div class="of-tabs__panel" id="tab-usage">
-<div class="of-grid">
-<div class="of-card">电商 · 商品精修</div>
-<div class="of-card">教育 · 课件封面</div>
-<div class="of-card">自媒体 · 封面图</div>
-<div class="of-card">证件照 · 快速合规</div>
-</div>
-</div>
-<div class="of-tabs__panel" id="tab-env">
-<div class="of-grid">
-<div class="of-card">户外 · 草地</div>
-<div class="of-card">室内 · 简洁客厅</div>
-<div class="of-card">工作室 · 灯光棚</div>
-<div class="of-card">节日 · 圣诞布景</div>
-</div>
-</div>
-<div class="of-tabs__panel" id="tab-event">
-<div class="of-grid">
-<div class="of-card">双十一 · 主会场</div>
-<div class="of-card">黑五 · 折扣主题</div>
-<div class="of-card">圣诞 · 礼盒风</div>
-<div class="of-card">春节 · 红金风格</div>
+<div class="of-card">背景 · 渐变/纹理</div>
+<div class="of-card">贴纸/形状</div>
+<div class="of-card">图标 · 常用 UI</div>
+<div class="of-card">字体 · 标题/花字</div>
 </div>
 </div>
 </div>
 </section>
-</main>
-<!-- 页尾 -->
-<footer class="of-footer">
+
+
+<!-- 页尾（沿用你现有风格） -->
+<footer class="of-footer" role="contentinfo" aria-label="页尾">
 <div>© 2025 ObjectForge · All rights reserved.</div>
 <div class="of-footer__links">
 <a href="#">团队信息</a>
 <a href="#" title="预留未来入口">虚拟人</a>
-<a href="#" title="预留未来入口">3D空间</a>
+<a href="#" title="预留未来入口">3D 空间</a>
 </div>
 </footer>
+
+
+<script>
+// 外部 CSS 成功后，去掉兜底 no-css
+window.addEventListener('load',()=>{document.body.classList.remove('no-css');});
+</script>
 <script src="/static/js/main.js"></script>
 </body>
 </html>
