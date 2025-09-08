@@ -1,4 +1,11 @@
 :root{
+--bg:#0b1020;
+--text:#e5e7eb;
+--primary:#4f46e5;
+--line:#1e293b;
+--muted:#9ca3af;
+--card:#0f1730;
+}
 *{box-sizing:border-box}
 html,body{height:100%}
 body{margin:0;background:var(--bg);color:var(--text);font:14px/1.6 ui-sans-serif,system-ui,Segoe UI,Roboto,Helvetica,Arial}

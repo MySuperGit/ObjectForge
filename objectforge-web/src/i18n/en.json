@@ -1,0 +1,19 @@
+{
+  "nav": {
+    "home": "Home",
+    "features": "Features",
+    "plaza": "Plaza",
+    "reviews": "Reviews",
+    "pricing": "Pricing"
+  },
+  "buttons": {
+    "login": "Login",
+    "register": "Register"
+  },
+  "sidebar": {
+    "hot": "Hot",
+    "recommend": "Recommend",
+    "all": "All"
+  }
+}
+
