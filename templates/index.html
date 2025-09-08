@@ -1,6 +1,37 @@
 <!doctype html>
-</section>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ObjectForge · AI 图像工坊</title>
+  <link rel="icon" href="/static/favicon.ico">
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body class="no-css">
+<header id="siteHeader" class="of-header header--hidden" role="banner">
+  <div class="of-header__inner">
+    <a href="/" class="brand">ObjectForge</a>
+    <nav class="of-nav" aria-label="主导航">
+      <a href="#design">AI 设计</a>
+      <a href="#templates">模板</a>
+      <a href="#" class="disabled">更多功能</a>
+    </nav>
+    <a href="#" class="of-cta">登录</a>
+  </div>
+</header>
 
+<main>
+<section class="hero" aria-label="介绍">
+  <div class="hero__wrap">
+    <h1>ObjectForge</h1>
+    <p class="hero__sub">AI 图像工坊，快速生成与编辑视觉素材</p>
+    <div class="hero__actions">
+      <a href="#templates" class="btn btn--primary">开始创作</a>
+      <a href="#design" class="btn btn--ghost">了解更多</a>
+    </div>
+  </div>
+  <div id="headerSentinel" class="hero__sentinel"></div>
+</section>
 
 <!-- 次页面：左 AI 设计 / 右 介绍与信任（OpenAI/Remaker 混合信息页） -->
 <section id="design" class="grid-two grid-two--reverse" aria-label="AI 设计与介绍">
@@ -27,7 +58,6 @@
 </div>
 </article>
 </section>
-
 
 <!-- 模板 / 灵感（保留原 tabs，可复用你已有的数据接入） -->
 <section id="templates" class="of-layer of-layer--tabs" aria-label="模板与灵感">
@@ -63,7 +93,7 @@
 </div>
 </div>
 </section>
-
+</main>
 
 <!-- 页尾（沿用你现有风格） -->
 <footer class="of-footer" role="contentinfo" aria-label="页尾">
@@ -75,7 +105,6 @@
 </div>
 </footer>
 
-
 <script>
 // 外部 CSS 成功后，去掉兜底 no-css
 window.addEventListener('load',()=>{document.body.classList.remove('no-css');});
@@ -83,3 +112,4 @@ window.addEventListener('load',()=>{document.body.classList.remove('no-css');});
 <script src="/static/js/main.js"></script>
 </body>
 </html>
+
