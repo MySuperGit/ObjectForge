@@ -14,6 +14,8 @@
     "hot": "Hot",
     "recommend": "Recommend",
     "all": "All"
-  }
+  },
+  "cta": {"start": "Start"},
+  "footer": {"help": "Help", "terms": "Terms", "privacy": "Privacy"}
 }
 

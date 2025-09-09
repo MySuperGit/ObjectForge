@@ -2,12 +2,14 @@ from fastapi import FastAPI, UploadFile, File, Form
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse, JSONResponse
 from rembg import remove
-import io, requests
+from urllib.parse import urlparse
+import io, os, requests
 
 app = FastAPI(title="ObjectForge API", version="0.1.0")
+origins = os.getenv("ALLOWED_ORIGINS", "http://localhost:5173").split(",")
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=origins,
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -40,6 +42,8 @@ def features():
             "slug": "virtual-human",
             "group": "generate",
             "icon": "user",
+            "isNew": True,
+            "newBadgeUntil": "2026-06-01",
             "availability": "coming_soon",
             "releaseAt": "2026-01-10",
             "tags": ["技术"],
@@ -125,8 +129,13 @@ async def bg_remove(image_file: UploadFile = File(None), image_url: str = Form(N
     if image_file:
         raw = image_file.file.read()
     elif image_url:
+        parsed = urlparse(image_url)
+        if parsed.scheme not in {"http", "https"} or not parsed.netloc:
+            return JSONResponse({"error": "invalid url"}, status_code=400)
         r = requests.get(image_url, timeout=20)
         r.raise_for_status()
+        if int(r.headers.get("Content-Length", 0)) > 5 * 1024 * 1024:
+            return JSONResponse({"error": "file too large"}, status_code=413)
         raw = r.content
     else:
         return JSONResponse({"error": "image_file or image_url required"}, status_code=400)

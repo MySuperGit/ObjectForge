@@ -11,9 +11,14 @@ All UI colors must reference the following CSS variables defined in `objectforge
   --bg-6:#DCD5C0; --bg-7:#BDB198; --bg-white:#FFFFFF; --bg-9:#F5F5F5;
   --fg-1:#141413; --fg-2:#23272D; --fg-black:#000000; --fg-white:#FFFFFF;
   --brand:#2B83DA; --accent-1:#754F31; --accent-2:#409EFF;
-  --new:#E53935;
+--new:#E53935;
 }
 ```
+
+### Color & Component Guidelines
+- Always consume these variables through Tailwind classes (e.g. `bg-brand`, `text-fg-1`).
+- Primary actions use `brand`; emphasis uses `accent-2`; decorative accents use `accent-1`.
+- All feature entry points reserve a `24×14` container for a `NEW` badge using `bg-new` and `text-fg-white`.
 
 ## Development
 ### Backend

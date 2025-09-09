@@ -4,6 +4,7 @@ import NewBadge from './NewBadge'
 import { useUIStore } from '../store/ui'
 import LanguageSwitcher from './LanguageSwitcher'
 import Tooltip from './Tooltip'
+import { isFeatureNew } from '../lib/utils'
 
 export default function Header() {
   useHeaderReveal()
@@ -13,8 +14,19 @@ export default function Header() {
 
   const navItems = [
     { key: 'home' },
-    { key: 'features', isNew: true },
-    { key: 'plaza', soon: true, releaseAt: '2026-01-10' },
+    {
+      key: 'features',
+      isNew: true,
+      newBadgeUntil: '2025-12-01',
+      availability: 'available'
+    },
+    {
+      key: 'plaza',
+      availability: 'coming_soon',
+      releaseAt: '2026-01-10',
+      isNew: true,
+      newBadgeUntil: '2026-06-01'
+    },
     { key: 'reviews' },
     { key: 'pricing' }
   ] as const
@@ -35,16 +47,28 @@ export default function Header() {
         </div>
         <nav className="flex gap-4">
           {navItems.map((n) => (
-            <Tooltip key={n.key} content={n.soon ? `敬请期待 · 上线：${n.releaseAt}` : undefined}>
+            <Tooltip
+              key={n.key}
+              content={
+                n.availability === 'coming_soon'
+                  ? `敬请期待 · 上线：${n.releaseAt}`
+                  : undefined
+              }
+            >
               <a
                 href="#"
                 className={`relative flex items-center ${
-                  n.soon ? 'text-bg-6 pointer-events-none' : ''
+                  n.availability === 'coming_soon'
+                    ? 'text-bg-6 pointer-events-none'
+                    : ''
                 }`}
               >
                 {t(`nav.${n.key}`)}
                 <span className="absolute -top-2 -right-3">
-                  <NewBadge show={Boolean(n.isNew)} />
+                  <NewBadge
+                    show={isFeatureNew(n as any)}
+                    until={(n as any).newBadgeUntil}
+                  />
                 </span>
               </a>
             </Tooltip>
