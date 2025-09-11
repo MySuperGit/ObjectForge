@@ -1,0 +1,21 @@
+{
+  "nav": {
+    "home": "首页",
+    "features": "功能",
+    "plaza": "广场",
+    "reviews": "评价",
+    "pricing": "定价"
+  },
+  "buttons": {
+    "login": "登录",
+    "register": "注册"
+  },
+  "sidebar": {
+    "hot": "热门",
+    "recommend": "推荐",
+    "all": "全部"
+  },
+  "cta": {"start": "开始"},
+  "footer": {"help": "帮助", "terms": "条款", "privacy": "隐私"}
+}
+
