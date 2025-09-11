@@ -1,17 +1,18 @@
-# Python
-__pycache__/
-*.pyc
-*.pyo
-
-# Venv
+# dependencies
+node_modules/
+# environment
+.env
+.env.*
+!.env.example
 .venv/
-
-# IDE/OS
-.vscode/
-.idea/
+# build
+/dist
+/build
+# python
+__pycache__/
+*.py[cod]
+# OS/IDE
 .DS_Store
 Thumbs.db
-
-# App runtime
-static/uploads/
-.env
+.vscode/
+.idea/
