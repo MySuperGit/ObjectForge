@@ -10,13 +10,13 @@ export default function Footer() {
           <p>© {new Date().getFullYear()} ObjectForge</p>
         </div>
         <div className="space-y-1">
-          <a href="#" className="block hover:underline" target="_blank" rel="noreferrer">
+          <a href="/help" className="block hover:underline">
             {t('footer.help')}
           </a>
-          <a href="#" className="block hover:underline" target="_blank" rel="noreferrer">
+          <a href="/terms" className="block hover:underline">
             {t('footer.terms')}
           </a>
-          <a href="#" className="block hover:underline" target="_blank" rel="noreferrer">
+          <a href="/privacy" className="block hover:underline">
             {t('footer.privacy')}
           </a>
         </div>
@@ -25,10 +25,10 @@ export default function Footer() {
             hi@example.com
           </a>
           <div className="flex gap-3">
-            <a href="#" aria-label="twitter" className="hover:underline">
+            <a href="https://twitter.com" aria-label="twitter" className="hover:underline" target="_blank" rel="noreferrer">
               Twitter
             </a>
-            <a href="#" aria-label="github" className="hover:underline">
+            <a href="https://github.com" aria-label="github" className="hover:underline" target="_blank" rel="noreferrer">
               GitHub
             </a>
           </div>

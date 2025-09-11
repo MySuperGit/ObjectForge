@@ -34,7 +34,7 @@ def features():
             "isNew": True,
             "newBadgeUntil": "2025-12-01",
             "availability": "available",
-            "tags": ["热门"],
+            "tags": ["热门", "推荐"],
         },
         {
             "id": "virtual-human",

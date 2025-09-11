@@ -1,35 +1,26 @@
 import { useTranslation } from 'react-i18next'
+import { Link } from 'react-router-dom'
 import useHeaderReveal from '../hooks/useHeaderReveal'
 import NewBadge from './NewBadge'
 import { useUIStore } from '../store/ui'
 import LanguageSwitcher from './LanguageSwitcher'
 import Tooltip from './Tooltip'
 import { isFeatureNew } from '../lib/utils'
+import { useFeatures } from '../lib/api'
 
 export default function Header() {
   useHeaderReveal()
   const hidden = useUIStore((s) => s.headerHidden)
   const toggleSidebar = useUIStore((s) => s.toggleSidebar)
   const { t } = useTranslation()
+  const { data: features = [] } = useFeatures()
 
-  const navItems = [
-    { key: 'home' },
-    {
-      key: 'features',
-      isNew: true,
-      newBadgeUntil: '2025-12-01',
-      availability: 'available'
-    },
-    {
-      key: 'plaza',
-      availability: 'coming_soon',
-      releaseAt: '2026-01-10',
-      isNew: true,
-      newBadgeUntil: '2026-06-01'
-    },
-    { key: 'reviews' },
-    { key: 'pricing' }
-  ] as const
+  const baseNav = [
+    { label: t('nav.home'), to: '/' },
+    { label: t('nav.plaza'), to: '/plaza' },
+    { label: t('nav.reviews'), to: '/reviews' },
+    { label: t('nav.pricing'), to: '/pricing' }
+  ]
 
   return (
     <header
@@ -46,31 +37,41 @@ export default function Header() {
           </button>
         </div>
         <nav className="flex gap-4">
-          {navItems.map((n) => (
+          {baseNav.map((n) => (
+            <Link key={n.to} to={n.to} className="relative flex items-center">
+              {n.label}
+              <span className="absolute -top-2 -right-3">
+                <NewBadge show={false} />
+              </span>
+            </Link>
+          ))}
+          {features.map((f) => (
             <Tooltip
-              key={n.key}
+              key={f.id}
               content={
-                n.availability === 'coming_soon'
-                  ? `敬请期待 · 上线：${n.releaseAt}`
+                f.availability === 'coming_soon'
+                  ? `${t('status.comingSoon', { date: f.releaseAt })}`
                   : undefined
               }
             >
-              <a
-                href="#"
-                className={`relative flex items-center ${
-                  n.availability === 'coming_soon'
-                    ? 'text-bg-6 pointer-events-none'
-                    : ''
-                }`}
-              >
-                {t(`nav.${n.key}`)}
-                <span className="absolute -top-2 -right-3">
-                  <NewBadge
-                    show={isFeatureNew(n as any)}
-                    until={(n as any).newBadgeUntil}
-                  />
+              {f.availability === 'coming_soon' ? (
+                <span className="relative flex items-center text-bg-6 pointer-events-none">
+                  {f.title}
+                  <span className="absolute -top-2 -right-3">
+                    <NewBadge show={isFeatureNew(f)} until={f.newBadgeUntil} />
+                  </span>
                 </span>
-              </a>
+              ) : (
+                <Link
+                  to={`/features/${f.slug}`}
+                  className="relative flex items-center"
+                >
+                  {f.title}
+                  <span className="absolute -top-2 -right-3">
+                    <NewBadge show={isFeatureNew(f)} until={f.newBadgeUntil} />
+                  </span>
+                </Link>
+              )}
             </Tooltip>
           ))}
         </nav>

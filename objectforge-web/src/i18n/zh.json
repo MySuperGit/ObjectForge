@@ -1,5 +1,8 @@
 {
   "nav": { "home": "首页", "plaza": "图片广场", "reviews": "用户评价", "pricing": "计费" },
   "cta": { "start": "开始", "upload": "上传图片", "download": "下载", "goOperate": "进入操作中心" },
-  "status": { "comingSoon": "敬请期待：{{date}}" }
+  "status": { "comingSoon": "敬请期待：{{date}}" },
+  "sidebar": { "hot": "热门", "recommend": "推荐", "all": "全部" },
+  "buttons": { "login": "登录", "register": "注册" },
+  "footer": { "help": "帮助", "terms": "条款", "privacy": "隐私" }
 }

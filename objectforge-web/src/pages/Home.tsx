@@ -1,19 +1,14 @@
 import { useState } from 'react'
-import { useQuery } from '@tanstack/react-query'
 import Carousel from '../components/Carousel'
 import FeatureCard from '../components/FeatureCard'
 import CompareSlider from '../components/CompareSlider'
-import { api } from '../lib/api'
+import { useFeatures, removeBg } from '../lib/api'
 import { mockFeatures } from '../lib/features.mock'
-import type { Feature } from '../lib/types'
 
 export default function Home() {
-  const { data: features = mockFeatures } = useQuery<Feature[]>({
-    queryKey: ['features'],
-    queryFn: () => api.get('/features').catch(() => mockFeatures)
-  })
-
-  const slides = features.map((f) => <FeatureCard key={f.id} feature={f} />)
+  const { data: features } = useFeatures()
+  const list = features ?? mockFeatures
+  const slides = list.map((f) => <FeatureCard key={f.id} feature={f} />)
 
   const [orig, setOrig] = useState<string | null>(null)
   const [result, setResult] = useState<string | null>(null)
@@ -23,7 +18,7 @@ export default function Home() {
     if (!file) return
     setOrig(URL.createObjectURL(file))
     try {
-      const blob = await api.removeBg(file)
+      const blob = await removeBg(file)
       setResult(URL.createObjectURL(blob))
     } catch (e) {
       // ignore

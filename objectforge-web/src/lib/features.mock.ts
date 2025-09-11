@@ -10,7 +10,7 @@ export const mockFeatures: Feature[] = [
     isNew: true,
     newBadgeUntil: '2025-12-01',
     availability: 'available',
-    tags: ['hot']
+    tags: ['热门', '推荐']
   },
   {
     id: 'virtual-human',
@@ -20,7 +20,7 @@ export const mockFeatures: Feature[] = [
     icon: 'user',
     availability: 'coming_soon',
     releaseAt: '2026-01-10',
-    tags: ['tech'],
+    tags: ['技术'],
     isNew: true,
     newBadgeUntil: '2026-06-01'
   }

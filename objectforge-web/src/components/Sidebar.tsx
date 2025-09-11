@@ -1,18 +1,31 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import * as Tooltip from '@radix-ui/react-tooltip'
-import { Flame, ThumbsUp, List } from 'lucide-react'
+import { List, Scissors, User, LucideIcon } from 'lucide-react'
 import { useUIStore } from '../store/ui'
 import { useTranslation } from 'react-i18next'
 import NewBadge from './NewBadge'
+import { useFeatures } from '../lib/api'
+import { isFeatureNew } from '../lib/utils'
 
 export default function Sidebar() {
   const { sidebarOpen } = useUIStore()
   const { t } = useTranslation()
   const [filter, setFilter] = useState<'hot' | 'recommend' | 'all'>('hot')
+  const { data: features = [] } = useFeatures()
 
   if (!sidebarOpen) return null
 
-  const icons = { hot: Flame, recommend: ThumbsUp, all: List }
+  const iconMap: Record<string, LucideIcon> = {
+    cut: Scissors,
+    user: User
+  }
+
+  const filtered = features.filter((f) => {
+    if (filter === 'hot') return f.tags?.includes('热门')
+    if (filter === 'recommend') return f.tags?.includes('推荐')
+    return true
+  })
 
   return (
     <aside className="fixed top-20 left-4 z-40 flex flex-col gap-4">
@@ -30,23 +43,35 @@ export default function Sidebar() {
         ))}
       </div>
       <div className="grid gap-3">
-        {[1, 2, 3, 4, 5, 6].map((n) => {
-          const Icon = icons[filter]
+        {filtered.map((feat) => {
+          const Icon = iconMap[feat.icon ?? ''] || List
+          const comingSoon = feat.availability === 'coming_soon'
+          const btn = (
+            <div
+              className={`relative w-14 h-14 rounded-full bg-bg-white shadow-card flex items-center justify-center ${
+                comingSoon ? 'text-bg-6 pointer-events-none' : ''
+              }`}
+            >
+              <Icon />
+              <span className="absolute -top-1 -right-1">
+                <NewBadge show={isFeatureNew(feat)} until={feat.newBadgeUntil} />
+              </span>
+            </div>
+          )
           return (
-            <Tooltip.Root key={n} delayDuration={200}>
+            <Tooltip.Root key={feat.id} delayDuration={200}>
               <Tooltip.Trigger asChild>
-                <button className="relative w-14 h-14 rounded-full bg-bg-white shadow-card flex items-center justify-center">
-                  <Icon />
-                  <span className="absolute -top-1 -right-1">
-                    <NewBadge />
-                  </span>
-                </button>
+                {comingSoon ? (
+                  btn
+                ) : (
+                  <Link to={`/features/${feat.slug}`}>{btn}</Link>
+                )}
               </Tooltip.Trigger>
-              <Tooltip.Portal>
+              {comingSoon && (
                 <Tooltip.Content side="right" className="bg-fg-1 text-fg-white text-xs px-2 py-1 rounded">
-                  {t(`sidebar.${filter}`)} {n}
+                  {`${t('status.comingSoon', { date: feat.releaseAt })}`}
                 </Tooltip.Content>
-              </Tooltip.Portal>
+              )}
             </Tooltip.Root>
           )
         })}

@@ -1,9 +1,11 @@
-export interface Feature {
+export type FeatureGroup = 'generate' | 'edit' | 'inspire' | 'business'
+
+export type Feature = {
   id: string
   title: string
   slug: string
-  group: 'generate' | 'edit' | 'inspire' | 'business'
-  icon: string
+  group: FeatureGroup
+  icon?: string
   isNew?: boolean
   newBadgeUntil?: string
   availability: 'available' | 'coming_soon'
@@ -12,13 +14,13 @@ export interface Feature {
   description?: string
 }
 
-export interface Review {
+export type Review = {
   id: number
   author: string
   quote: string
 }
 
-export interface PricingPlan {
+export type PricingPlan = {
   id: string
   title: string
   price: string
@@ -26,7 +28,7 @@ export interface PricingPlan {
   cta: string
 }
 
-export interface FAQ {
+export type FAQ = {
   question: string
   answer: string
 }
