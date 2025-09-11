@@ -1,3 +1,9 @@
+@import './theme.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.btn-brand {
+  @apply inline-flex items-center justify-center rounded-xl px-4 py-2 font-semibold text-fg-white bg-brand hover:opacity-90;
+}

@@ -6,3 +6,7 @@
   --new:#E53935; /* 右上角 NEW 红 */
 }
 html,body{ background:var(--bg-1); color:var(--fg-1); }
+
+@media (prefers-reduced-motion: reduce){
+  *{transition:none !important;animation:none !important;}
+}
