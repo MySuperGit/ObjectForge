@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import useScrollDir from './useScrollDir'
 import useIdle from './useIdle'
-import { useUIStore } from '../store/ui'
 
 export default function useHeaderReveal() {
   const [hidden, setHidden] = useState(false)
@@ -37,11 +36,6 @@ export default function useHeaderReveal() {
       window.removeEventListener('focusout', onFocusOut)
     }
   }, [])
-
-  const setStoreHidden = useUIStore((s) => s.setHeaderHidden)
-  useEffect(() => {
-    setStoreHidden(hidden)
-  }, [hidden, setStoreHidden])
 
   return hidden
 }

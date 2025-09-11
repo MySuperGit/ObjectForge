@@ -1,15 +1,9 @@
 export interface Feature {
-  id: string
+  id: number
   title: string
+  description: string
   slug: string
-  group: 'generate' | 'edit' | 'inspire' | 'business'
-  icon: string
   isNew?: boolean
-  newBadgeUntil?: string
-  availability: 'available' | 'coming_soon'
-  releaseAt?: string
-  tags?: string[]
-  description?: string
 }
 
 export interface Review {

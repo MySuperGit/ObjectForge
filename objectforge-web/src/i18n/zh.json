@@ -14,8 +14,6 @@
     "hot": "热门",
     "recommend": "推荐",
     "all": "全部"
-  },
-  "cta": {"start": "开始"},
-  "footer": {"help": "帮助", "terms": "条款", "privacy": "隐私"}
+  }
 }
 

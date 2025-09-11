@@ -3,9 +3,7 @@ import Masonry from 'react-masonry-css'
 import Lightbox from 'yet-another-react-lightbox'
 import 'yet-another-react-lightbox/styles.css'
 import Carousel from '../components/Carousel'
-import { gallery as mockGallery } from '../lib/gallery.mock'
-import { useQuery } from '@tanstack/react-query'
-import { api } from '../lib/api'
+import { gallery } from '../lib/gallery.mock'
 import '../components/ImageCard.css'
 
 const notices = [
@@ -26,11 +24,6 @@ const tagDefs = [
 export default function Plaza() {
   const [activeTag, setActiveTag] = useState('all')
   const [index, setIndex] = useState(-1)
-
-  const { data: gallery = mockGallery } = useQuery({
-    queryKey: ['gallery'],
-    queryFn: () => api.get('/gallery').catch(() => mockGallery)
-  })
 
   const filtered =
     activeTag === 'all'
@@ -59,7 +52,7 @@ export default function Plaza() {
           <button
             key={t.key}
             onClick={() => setActiveTag(t.key)}
-            className={`px-3 py-1 rounded border border-bg-6 transition-colors ${
+            className={`px-3 py-1 rounded border transition-colors ${
               activeTag === t.key
                 ? 'bg-brand text-fg-white'
                 : 'bg-bg-9 text-fg-1'

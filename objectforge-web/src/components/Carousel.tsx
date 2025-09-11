@@ -6,9 +6,6 @@ interface Props {
 }
 
 export default function Carousel({ slides }: Props) {
-  const prefersReduce =
-    typeof window !== 'undefined' &&
-    window.matchMedia('(prefers-reduced-motion: reduce)').matches
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true })
   const timer = useRef<number>()
 
@@ -17,10 +14,10 @@ export default function Carousel({ slides }: Props) {
   }, [])
 
   const play = useCallback(() => {
-    if (!emblaApi || prefersReduce) return
+    if (!emblaApi) return
     stop()
     timer.current = window.setInterval(() => emblaApi.scrollNext(), 3000)
-  }, [emblaApi, stop, prefersReduce])
+  }, [emblaApi, stop])
 
   useEffect(() => {
     play()
@@ -28,35 +25,19 @@ export default function Carousel({ slides }: Props) {
   }, [play, stop])
 
   return (
-    <div className="relative" aria-roledescription="carousel">
-      <div
-        className="overflow-hidden"
-        ref={emblaRef}
-        onMouseEnter={stop}
-        onMouseLeave={play}
-      >
-        <div className="flex">
-          {slides.map((s, i) => (
-            <div className="flex-[0_0_100%]" key={i}>
-              {s}
-            </div>
-          ))}
-        </div>
+    <div
+      className="overflow-hidden"
+      ref={emblaRef}
+      onMouseEnter={stop}
+      onMouseLeave={play}
+    >
+      <div className="flex">
+        {slides.map((s, i) => (
+          <div className="flex-[0_0_100%]" key={i}>
+            {s}
+          </div>
+        ))}
       </div>
-      <button
-        className="absolute left-2 top-1/2 -translate-y-1/2 bg-bg-9/70 p-2 rounded focus:outline-none"
-        onClick={() => emblaApi?.scrollPrev()}
-        aria-label="Previous slide"
-      >
-        ‹
-      </button>
-      <button
-        className="absolute right-2 top-1/2 -translate-y-1/2 bg-bg-9/70 p-2 rounded focus:outline-none"
-        onClick={() => emblaApi?.scrollNext()}
-        aria-label="Next slide"
-      >
-        ›
-      </button>
     </div>
   )
 }

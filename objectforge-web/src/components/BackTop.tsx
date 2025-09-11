@@ -8,16 +8,10 @@ export default function BackTop() {
     return () => window.removeEventListener('scroll', handler)
   }, [])
   if (!visible) return null
-  const prefersReduce =
-    typeof window !== 'undefined' &&
-    window.matchMedia('(prefers-reduced-motion: reduce)').matches
   return (
     <button
       className="fixed bottom-4 right-4 p-2 bg-brand text-fg-white rounded"
-      onClick={() =>
-        window.scrollTo({ top: 0, behavior: prefersReduce ? 'auto' : 'smooth' })
-      }
-      aria-label="Back to top"
+      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
     >
       ↑
     </button>

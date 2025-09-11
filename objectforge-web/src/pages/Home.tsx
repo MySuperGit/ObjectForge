@@ -35,11 +35,9 @@ export default function Home() {
     const canvas = document.createElement('canvas')
     canvas.width = canvas.height = size
     const ctx = canvas.getContext('2d')!
-    const brand = getComputedStyle(document.documentElement).getPropertyValue('--brand')
-    const white = getComputedStyle(document.documentElement).getPropertyValue('--fg-white')
-    ctx.fillStyle = brand
+    ctx.fillStyle = '#2B83DA'
     ctx.fillRect(0, 0, size, size)
-    ctx.fillStyle = white
+    ctx.fillStyle = '#fff'
     ctx.beginPath()
     ctx.arc(size / 2, size / 2, 50, 0, Math.PI * 2)
     ctx.fill()
@@ -48,7 +46,7 @@ export default function Home() {
     const canvas2 = document.createElement('canvas')
     canvas2.width = canvas2.height = size
     const ctx2 = canvas2.getContext('2d')!
-    ctx2.fillStyle = brand
+    ctx2.fillStyle = '#2B83DA'
     ctx2.beginPath()
     ctx2.arc(size / 2, size / 2, 50, 0, Math.PI * 2)
     ctx2.fill()
@@ -63,10 +61,7 @@ export default function Home() {
       <Carousel slides={slides} />
       <div>
         <div className="mb-2 flex gap-2">
-          <label htmlFor="upload" className="sr-only">
-            Upload image for background removal
-          </label>
-          <input id="upload" type="file" accept="image/*" onChange={onUpload} />
+          <input type="file" accept="image/*" onChange={onUpload} />
           <button
             onClick={useSample}
             className="px-3 py-1 rounded bg-accent2 text-fg-white"
