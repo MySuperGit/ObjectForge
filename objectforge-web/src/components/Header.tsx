@@ -1,89 +1,83 @@
-import { useTranslation } from 'react-i18next'
-import { Link } from 'react-router-dom'
-import useHeaderReveal from '../hooks/useHeaderReveal'
-import NewBadge from './NewBadge'
-import { useUIStore } from '../store/ui'
-import LanguageSwitcher from './LanguageSwitcher'
-import Tooltip from './Tooltip'
-import { isFeatureNew } from '../lib/utils'
+import { Link, useNavigate } from 'react-router-dom'
+import { useHeaderReveal } from '../hooks/useHeaderReveal'
 import { useFeatures } from '../lib/api'
+import NewBadge from './NewBadge'
+import LanguageSwitcher from './LanguageSwitcher'
+import { useTranslation } from 'react-i18next'
 
 export default function Header() {
-  useHeaderReveal()
-  const hidden = useUIStore((s) => s.headerHidden)
-  const toggleSidebar = useUIStore((s) => s.toggleSidebar)
-  const { t } = useTranslation()
+  const visible = useHeaderReveal()
   const { data: features = [] } = useFeatures()
+  const { t } = useTranslation()
+  const nav = useNavigate()
 
-  const baseNav = [
-    { label: t('nav.home'), to: '/' },
-    { label: t('nav.plaza'), to: '/plaza' },
-    { label: t('nav.reviews'), to: '/reviews' },
-    { label: t('nav.pricing'), to: '/pricing' }
-  ]
+  const groups = ['generate', 'edit', 'inspire', 'business'] as const
+  const groupNames: Record<(typeof groups)[number], string> = {
+    generate: 'Generate',
+    edit: 'Edit',
+    inspire: 'Inspire',
+    business: 'Business'
+  }
+
+  const grouped = Object.fromEntries(
+    groups.map((g) => [g, features.filter((f) => f.group === g)])
+  )
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 bg-bg-white border-b border-bg-9 shadow-card transition-transform ${
-        hidden ? '-translate-y-full' : 'translate-y-0'
+      className={`fixed top-0 inset-x-0 z-50 bg-bg-white/85 backdrop-blur border-b border-bg-9 transition duration-200 ${
+        visible ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'
       }`}
+      aria-label="Main header"
     >
-      <div className="flex items-center justify-between h-16 px-4">
-        <div className="flex items-center gap-2">
-          <div className="w-6 h-6 bg-fg-1" />
-          <span className="font-bold">ObjectForge</span>
-          <button className="ml-2" onClick={toggleSidebar} aria-label="sidebar toggle">
-            ☰
-          </button>
+      <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <div className="w-8 h-8 rounded-full bg-brand"></div>
+          <Link to="/" className="font-semibold text-fg-1">
+            ObjectForge
+          </Link>
+          <button className="ml-2 px-2 py-1 rounded border border-bg-9 text-sm">☰</button>
         </div>
-        <nav className="flex gap-4">
-          {baseNav.map((n) => (
-            <Link key={n.to} to={n.to} className="relative flex items-center">
-              {n.label}
-              <span className="absolute -top-2 -right-3">
-                <NewBadge show={false} />
+
+        <nav className="hidden md:flex items-center gap-6">
+          {groups.map((g) => (
+            <div key={g} className="relative">
+              <span className="text-sm font-semibold text-fg-2">
+                {groupNames[g]}
               </span>
-            </Link>
-          ))}
-          {features.map((f) => (
-            <Tooltip
-              key={f.id}
-              content={
-                f.availability === 'coming_soon'
-                  ? `${t('status.comingSoon', { date: f.releaseAt })}`
-                  : undefined
-              }
-            >
-              {f.availability === 'coming_soon' ? (
-                <span className="relative flex items-center text-bg-6 pointer-events-none">
-                  {f.title}
-                  <span className="absolute -top-2 -right-3">
-                    <NewBadge show={isFeatureNew(f)} until={f.newBadgeUntil} />
-                  </span>
-                </span>
-              ) : (
-                <Link
-                  to={`/features/${f.slug}`}
-                  className="relative flex items-center"
-                >
-                  {f.title}
-                  <span className="absolute -top-2 -right-3">
-                    <NewBadge show={isFeatureNew(f)} until={f.newBadgeUntil} />
-                  </span>
-                </Link>
-              )}
-            </Tooltip>
+              <div className="mt-2 flex items-center gap-3">
+                {grouped[g].slice(0, 4).map((item) => {
+                  const coming = item.availability === 'coming_soon'
+                  const tooltip = coming
+                    ? `${t('status.comingSoon', { date: item.releaseAt || '' })}`
+                    : ''
+                  return (
+                    <button
+                      key={item.id}
+                      onClick={() => !coming && nav(`/features/${item.slug}`)}
+                      className={`relative px-3 py-1 rounded-xl border border-bg-9 text-sm ${
+                        coming ? 'opacity-50 cursor-not-allowed' : 'hover:bg-bg-9'
+                      }`}
+                      title={tooltip}
+                      aria-disabled={coming}
+                    >
+                      <NewBadge isNew={item.isNew} until={item.newBadgeUntil} />
+                      <span>{item.title}</span>
+                    </button>
+                  )
+                })}
+              </div>
+            </div>
           ))}
         </nav>
-        <div className="flex items-center gap-4">
+
+        <div className="flex items-center gap-3">
           <LanguageSwitcher />
-          <button>{t('buttons.login')}</button>
-          <button>{t('buttons.register')}</button>
-          <div style={{ display: 'none' }} />
-          <div style={{ display: 'none' }} />
+          <Link to="/login" className="btn-brand text-sm px-3 py-1">
+            Login
+          </Link>
         </div>
       </div>
     </header>
   )
 }
-

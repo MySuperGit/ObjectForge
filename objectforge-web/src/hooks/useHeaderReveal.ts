@@ -1,48 +1,54 @@
 import { useEffect, useState } from 'react'
-import useScrollDir from './useScrollDir'
-import useIdle from './useIdle'
-import { useUIStore } from '../store/ui'
 
-export default function useHeaderReveal() {
-  const [hidden, setHidden] = useState(false)
-  const dir = useScrollDir()
-  const idle = useIdle(3000)
-  const [inputFocus, setInputFocus] = useState(false)
-
+export function useHeaderReveal() {
+  const [visible, setVisible] = useState(true)
   useEffect(() => {
-    if (inputFocus) return setHidden(false)
-    setHidden(dir === 'down')
-  }, [dir, inputFocus])
+    let lastY = window.scrollY
+    let idle: number | null = null
+    let forceShow = false
 
-  useEffect(() => {
-    if (!inputFocus) setHidden(idle)
-  }, [idle, inputFocus])
+    const show = () => setVisible(true)
+    const hide = () => {
+      if (!forceShow) setVisible(false)
+    }
+    const resetIdle = () => {
+      if (idle) clearTimeout(idle)
+      idle = window.setTimeout(hide, 3000)
+    }
 
-  useEffect(() => {
-    const onMove = (e: MouseEvent) => {
-      if (e.clientY <= 80) setHidden(false)
+    const onScroll = () => {
+      const y = window.scrollY
+      if (y < 10 || y < lastY) show()
+      else hide()
+      lastY = y
+      resetIdle()
     }
-    const onFocusIn = (e: FocusEvent) => {
-      if ((e.target as HTMLElement).tagName === 'INPUT') setInputFocus(true)
+    const onMouseMove = (e: MouseEvent) => {
+      if (e.clientY < 80) show()
     }
-    const onFocusOut = (e: FocusEvent) => {
-      if ((e.target as HTMLElement).tagName === 'INPUT') setInputFocus(false)
+    const onFocusIn = () => {
+      forceShow = true
+      show()
     }
-    window.addEventListener('mousemove', onMove)
+    const onFocusOut = () => {
+      forceShow = false
+      resetIdle()
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('mousemove', onMouseMove)
     window.addEventListener('focusin', onFocusIn)
     window.addEventListener('focusout', onFocusOut)
+    resetIdle()
     return () => {
-      window.removeEventListener('mousemove', onMove)
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('mousemove', onMouseMove)
       window.removeEventListener('focusin', onFocusIn)
       window.removeEventListener('focusout', onFocusOut)
+      if (idle) clearTimeout(idle)
     }
   }, [])
-
-  const setStoreHidden = useUIStore((s) => s.setHeaderHidden)
-  useEffect(() => {
-    setStoreHidden(hidden)
-  }, [hidden, setStoreHidden])
-
-  return hidden
+  return visible
 }
 
+export default useHeaderReveal

@@ -23,14 +23,11 @@ export default function FeatureDetail() {
     <div className="p-4 md:grid md:grid-cols-2 md:gap-6">
       <div className="space-y-6">
         <header className="flex items-center justify-between">
-          <h1 className="text-xl font-semibold flex items-center gap-2">
+          <h1 className="relative text-xl font-semibold flex items-center gap-2">
             {slug}
             <NewBadge />
           </h1>
-          <Link
-            to="/dashboard"
-            className="text-brand underline hover:no-underline"
-          >
+          <Link to="/dashboard" className="text-brand underline hover:no-underline">
             进入操作中心
           </Link>
         </header>
@@ -38,22 +35,10 @@ export default function FeatureDetail() {
         <section className="border p-4 rounded shadow-card">
           <h2 className="font-medium mb-2">生成区</h2>
           <form className="space-y-3">
-            <input
-              className="w-full border rounded p-2"
-              placeholder="Prompt"
-            />
-            <input
-              className="w-full border rounded p-2"
-              placeholder="模板"
-            />
-            <input
-              className="w-full border rounded p-2"
-              placeholder="尺寸"
-            />
-            <button
-              type="button"
-              className="px-4 py-2 rounded bg-brand text-fg-white"
-            >
+            <input className="w-full border rounded p-2" placeholder="Prompt" />
+            <input className="w-full border rounded p-2" placeholder="模板" />
+            <input className="w-full border rounded p-2" placeholder="尺寸" />
+            <button type="button" className="px-4 py-2 rounded bg-brand text-fg-white">
               生成
             </button>
           </form>
@@ -69,9 +54,7 @@ export default function FeatureDetail() {
         <PhotoAlbum
           layout="columns"
           photos={samplePhotos}
-          columns={(containerWidth) =>
-            containerWidth < 600 ? 1 : containerWidth < 900 ? 2 : 3
-          }
+          columns={(containerWidth) => (containerWidth < 600 ? 1 : containerWidth < 900 ? 2 : 3)}
           onClick={({ index }) => setIndex(index)}
           renderPhoto={(props) => <ImageWrapper {...props} />}
         />
@@ -89,10 +72,7 @@ export default function FeatureDetail() {
 function ImageWrapper({ photo, renderDefaultPhoto, wrapperStyle }: RenderPhotoProps) {
   return (
     <div className="image-card" style={wrapperStyle}>
-      {renderDefaultPhoto({
-        photo,
-        imageProps: { loading: 'lazy', className: 'w-full h-auto' }
-      })}
+      {renderDefaultPhoto({ photo, imageProps: { loading: 'lazy', className: 'w-full h-auto' } })}
     </div>
   )
 }

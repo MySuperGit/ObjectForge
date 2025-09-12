@@ -53,19 +53,13 @@ export default function Sidebar() {
               }`}
             >
               <Icon />
-              <span className="absolute -top-1 -right-1">
-                <NewBadge show={isFeatureNew(feat)} until={feat.newBadgeUntil} />
-              </span>
+              <NewBadge isNew={isFeatureNew(feat)} until={feat.newBadgeUntil} />
             </div>
           )
           return (
             <Tooltip.Root key={feat.id} delayDuration={200}>
               <Tooltip.Trigger asChild>
-                {comingSoon ? (
-                  btn
-                ) : (
-                  <Link to={`/features/${feat.slug}`}>{btn}</Link>
-                )}
+                {comingSoon ? btn : <Link to={`/features/${feat.slug}`}>{btn}</Link>}
               </Tooltip.Trigger>
               {comingSoon && (
                 <Tooltip.Content side="right" className="bg-fg-1 text-fg-white text-xs px-2 py-1 rounded">
@@ -79,4 +73,3 @@ export default function Sidebar() {
     </aside>
   )
 }
-

@@ -16,9 +16,7 @@ export default function FeatureCard({ feature }: Props) {
         comingSoon ? 'text-bg-6 pointer-events-none' : 'hover:bg-bg-4'
       }`}
     >
-      <div className="absolute top-2 right-2">
-        <NewBadge show={isFeatureNew(feature)} until={feature.newBadgeUntil} />
-      </div>
+      <NewBadge isNew={isFeatureNew(feature)} until={feature.newBadgeUntil} />
       <h3 className="font-semibold mb-1">{feature.title}</h3>
       {feature.description && <p className="text-sm text-fg-2">{feature.description}</p>}
     </div>
