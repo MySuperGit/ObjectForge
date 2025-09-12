@@ -1,19 +1,14 @@
 import { create } from 'zustand'
 
-interface UIState {
-  sidebarOpen: boolean
-  lang: string
-  headerHidden: boolean
-  toggleSidebar: () => void
-  setLang: (lang: string) => void
-  setHeaderHidden: (v: boolean) => void
+type UIState = {
+  sidebarCollapsed: boolean
+  setSidebarCollapsed: (v: boolean) => void
+  filterTab: '热门' | '推荐' | '全部'
+  setFilterTab: (v: '热门' | '推荐' | '全部') => void
 }
-
-export const useUIStore = create<UIState>((set) => ({
-  sidebarOpen: false,
-  lang: 'en',
-  headerHidden: false,
-  toggleSidebar: () => set((s) => ({ sidebarOpen: !s.sidebarOpen })),
-  setLang: (lang) => set({ lang }),
-  setHeaderHidden: (v) => set({ headerHidden: v })
+export const useUI = create<UIState>((set) => ({
+  sidebarCollapsed: false,
+  setSidebarCollapsed: (v) => set({ sidebarCollapsed: v }),
+  filterTab: '热门',
+  setFilterTab: (v) => set({ filterTab: v }),
 }))

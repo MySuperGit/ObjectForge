@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import PhotoAlbum, { Photo, RenderPhotoProps } from 'react-photo-album'
 import Lightbox from 'yet-another-react-lightbox'
 import 'yet-another-react-lightbox/styles.css'
+import { useTranslation } from 'react-i18next'
 import NewBadge from '../components/NewBadge'
 import '../components/ImageCard.css'
 
@@ -18,6 +19,7 @@ const samplePhotos: Photo[] = [
 export default function FeatureDetail() {
   const { slug } = useParams()
   const [index, setIndex] = useState(-1)
+  const { t } = useTranslation()
 
   return (
     <div className="p-4 md:grid md:grid-cols-2 md:gap-6">
@@ -27,8 +29,11 @@ export default function FeatureDetail() {
             {slug}
             <NewBadge />
           </h1>
-          <Link to="/dashboard" className="text-brand underline hover:no-underline">
-            进入操作中心
+          <Link
+            to={`/features/${slug}?mode=operate`}
+            className="text-brand underline hover:no-underline"
+          >
+            {t('cta.goOperate')}
           </Link>
         </header>
 
@@ -54,7 +59,9 @@ export default function FeatureDetail() {
         <PhotoAlbum
           layout="columns"
           photos={samplePhotos}
-          columns={(containerWidth) => (containerWidth < 600 ? 1 : containerWidth < 900 ? 2 : 3)}
+          columns={(containerWidth) =>
+            containerWidth < 600 ? 1 : containerWidth < 900 ? 2 : 3
+          }
           onClick={({ index }) => setIndex(index)}
           renderPhoto={(props) => <ImageWrapper {...props} />}
         />
@@ -72,7 +79,10 @@ export default function FeatureDetail() {
 function ImageWrapper({ photo, renderDefaultPhoto, wrapperStyle }: RenderPhotoProps) {
   return (
     <div className="image-card" style={wrapperStyle}>
-      {renderDefaultPhoto({ photo, imageProps: { loading: 'lazy', className: 'w-full h-auto' } })}
+      {renderDefaultPhoto({
+        photo,
+        imageProps: { loading: 'lazy', className: 'w-full h-auto' },
+      })}
     </div>
   )
 }

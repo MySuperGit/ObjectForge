@@ -1,74 +1,65 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
-import * as Tooltip from '@radix-ui/react-tooltip'
-import { List, Scissors, User, LucideIcon } from 'lucide-react'
-import { useUIStore } from '../store/ui'
-import { useTranslation } from 'react-i18next'
-import NewBadge from './NewBadge'
+import { Link, useLocation } from 'react-router-dom'
 import { useFeatures } from '../lib/api'
-import { isFeatureNew } from '../lib/utils'
+import { useUI } from '../store/ui'
+import NewBadge from './NewBadge'
+
+function matchFilter(tags: string[] | undefined, tab: '热门' | '推荐' | '全部') {
+  if (tab === '全部') return true
+  if (!tags?.length) return false
+  return tags.includes(tab)
+}
 
 export default function Sidebar() {
-  const { sidebarOpen } = useUIStore()
-  const { t } = useTranslation()
-  const [filter, setFilter] = useState<'hot' | 'recommend' | 'all'>('hot')
   const { data: features = [] } = useFeatures()
-
-  if (!sidebarOpen) return null
-
-  const iconMap: Record<string, LucideIcon> = {
-    cut: Scissors,
-    user: User
-  }
-
-  const filtered = features.filter((f) => {
-    if (filter === 'hot') return f.tags?.includes('热门')
-    if (filter === 'recommend') return f.tags?.includes('推荐')
-    return true
-  })
+  const { sidebarCollapsed, setSidebarCollapsed, filterTab, setFilterTab } = useUI()
+  const loc = useLocation()
 
   return (
-    <aside className="fixed top-20 left-4 z-40 flex flex-col gap-4">
-      <div className="flex gap-2">
-        {(['hot', 'recommend', 'all'] as const).map((f) => (
+    <aside className={`${sidebarCollapsed ? 'hidden md:block md:w-0' : 'block'} pt-2`}>
+      <div className="sticky top-20">
+        <div className="mb-3 flex items-center justify-between">
+          <div className="inline-flex rounded-xl border border-bg-9 overflow-hidden">
+            {(['热门', '推荐', '全部'] as const).map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setFilterTab(tab)}
+                className={`px-3 py-1 text-sm ${
+                  filterTab === tab ? 'bg-brand text-fg-white' : 'bg-bg-white'
+                }`}
+              >
+                {tab}
+              </button>
+            ))}
+          </div>
           <button
-            key={f}
-            onClick={() => setFilter(f)}
-            className={`px-2 py-1 rounded text-sm ${
-              filter === f ? 'bg-brand text-fg-white' : 'bg-bg-5'
-            }`}
+            onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
+            className="px-2 py-1 border border-bg-9 rounded text-sm"
           >
-            {t(`sidebar.${f}`)}
+            {sidebarCollapsed ? '⟶ 展开' : '⟵ 收起'}
           </button>
-        ))}
-      </div>
-      <div className="grid gap-3">
-        {filtered.map((feat) => {
-          const Icon = iconMap[feat.icon ?? ''] || List
-          const comingSoon = feat.availability === 'coming_soon'
-          const btn = (
-            <div
-              className={`relative w-14 h-14 rounded-full bg-bg-white shadow-card flex items-center justify-center ${
-                comingSoon ? 'text-bg-6 pointer-events-none' : ''
-              }`}
-            >
-              <Icon />
-              <NewBadge isNew={isFeatureNew(feat)} until={feat.newBadgeUntil} />
-            </div>
-          )
-          return (
-            <Tooltip.Root key={feat.id} delayDuration={200}>
-              <Tooltip.Trigger asChild>
-                {comingSoon ? btn : <Link to={`/features/${feat.slug}`}>{btn}</Link>}
-              </Tooltip.Trigger>
-              {comingSoon && (
-                <Tooltip.Content side="right" className="bg-fg-1 text-fg-white text-xs px-2 py-1 rounded">
-                  {`${t('status.comingSoon', { date: feat.releaseAt })}`}
-                </Tooltip.Content>
-              )}
-            </Tooltip.Root>
-          )
-        })}
+        </div>
+
+        <div className="grid grid-cols-3 gap-3">
+          {features
+            .filter((f) => matchFilter(f.tags, filterTab))
+            .map((f) => {
+              const disabled = f.availability === 'coming_soon'
+              return (
+                <Link
+                  key={f.id}
+                  to={disabled ? loc.pathname : `/features/${f.slug}`}
+                  onClick={(e) => disabled && e.preventDefault()}
+                  title={disabled ? `敬请期待：${f.releaseAt || ''}` : f.title}
+                  className={`relative w-14 h-14 rounded-full border border-bg-9 flex items-center justify-center ${
+                    disabled ? 'opacity-50 cursor-not-allowed' : 'hover:bg-bg-9'
+                  }`}
+                >
+                  <NewBadge isNew={f.isNew} until={f.newBadgeUntil} />
+                  <span className="text-[11px] text-center leading-tight px-1">{f.title}</span>
+                </Link>
+              )
+            })}
+        </div>
       </div>
     </aside>
   )
