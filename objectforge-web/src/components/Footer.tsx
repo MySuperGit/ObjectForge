@@ -10,6 +10,7 @@ export default function Footer() {
           <p>© {new Date().getFullYear()} ObjectForge</p>
         </div>
         <div className="space-y-1">
+<<<<<<< HEAD
           <a href="#" className="block hover:underline" target="_blank" rel="noreferrer">
             {t('footer.help')}
           </a>
@@ -17,6 +18,15 @@ export default function Footer() {
             {t('footer.terms')}
           </a>
           <a href="#" className="block hover:underline" target="_blank" rel="noreferrer">
+=======
+          <a href="/help" className="block hover:underline">
+            {t('footer.help')}
+          </a>
+          <a href="/terms" className="block hover:underline">
+            {t('footer.terms')}
+          </a>
+          <a href="/privacy" className="block hover:underline">
+>>>>>>> origin/codex/optimize-my-page-zy1m9v
             {t('footer.privacy')}
           </a>
         </div>
@@ -25,10 +35,17 @@ export default function Footer() {
             hi@example.com
           </a>
           <div className="flex gap-3">
+<<<<<<< HEAD
             <a href="#" aria-label="twitter" className="hover:underline">
               Twitter
             </a>
             <a href="#" aria-label="github" className="hover:underline">
+=======
+            <a href="https://twitter.com" aria-label="twitter" className="hover:underline" target="_blank" rel="noreferrer">
+              Twitter
+            </a>
+            <a href="https://github.com" aria-label="github" className="hover:underline" target="_blank" rel="noreferrer">
+>>>>>>> origin/codex/optimize-my-page-zy1m9v
               GitHub
             </a>
           </div>

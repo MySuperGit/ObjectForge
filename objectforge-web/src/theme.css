@@ -6,3 +6,10 @@
   --new:#E53935; /* 右上角 NEW 红 */
 }
 html,body{ background:var(--bg-1); color:var(--fg-1); }
+<<<<<<< HEAD
+=======
+
+@media (prefers-reduced-motion: reduce){
+  *{transition:none !important;animation:none !important;}
+}
+>>>>>>> origin/codex/optimize-my-page-zy1m9v

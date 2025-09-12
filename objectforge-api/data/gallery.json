@@ -1,0 +1,4 @@
+[
+  {"id":"g1","thumb":"https://picsum.photos/seed/1/400/300","full":"https://picsum.photos/seed/1/1200/900","tags":["图库","灵感"],"author":"UserA"},
+  {"id":"g2","thumb":"https://picsum.photos/seed/2/400/560","full":"https://picsum.photos/seed/2/1200/1680","tags":["热门"],"author":"UserB"}
+]

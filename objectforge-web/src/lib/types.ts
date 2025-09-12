@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 export interface Feature {
   id: number
   title: string
@@ -7,20 +8,52 @@ export interface Feature {
 }
 
 export interface Review {
+=======
+export type FeatureGroup = 'generate' | 'edit' | 'inspire' | 'business'
+
+export type Feature = {
+  id: string
+  title: string
+  slug: string
+  group: FeatureGroup
+  icon?: string
+  isNew?: boolean
+  newBadgeUntil?: string
+  availability: 'available' | 'coming_soon'
+  releaseAt?: string
+  tags?: string[]
+  description?: string
+}
+
+export type Review = {
+>>>>>>> origin/codex/optimize-my-page-zy1m9v
   id: number
   author: string
   quote: string
 }
 
+<<<<<<< HEAD
 export interface PricingPlan {
   id: string
+=======
+export type PlanId = 'monthly' | 'credits' | 'lifetime'
+export type Plan = {
+  id: PlanId
+>>>>>>> origin/codex/optimize-my-page-zy1m9v
   title: string
   price: string
   features: string[]
   cta: string
+<<<<<<< HEAD
 }
 
 export interface FAQ {
+=======
+  badge?: 'Best Value' | 'Popular' | null
+}
+
+export type FAQ = {
+>>>>>>> origin/codex/optimize-my-page-zy1m9v
   question: string
   answer: string
 }

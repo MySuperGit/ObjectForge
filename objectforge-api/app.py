@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from fastapi import FastAPI, UploadFile, File, Form
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse, JSONResponse
@@ -143,3 +144,29 @@ async def bg_remove(image_file: UploadFile = File(None), image_url: str = Form(N
     buf = io.BytesIO(cut)
     buf.seek(0)
     return StreamingResponse(buf, media_type="image/png")
+=======
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.middleware.gzip import GZipMiddleware
+from config import settings
+from routers import health, content, images
+
+app = FastAPI(title=settings.APP_NAME, version="0.2.0")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[str(o) for o in settings.CORS_ALLOW_ORIGINS] or ["*"] if settings.DEBUG else [str(o) for o in settings.CORS_ALLOW_ORIGINS],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+app.add_middleware(GZipMiddleware, minimum_size=1024)
+
+app.include_router(health.router)
+app.include_router(content.router)
+app.include_router(images.router)
+
+@app.get("/")
+def root():
+    return {"name": settings.APP_NAME, "version": "0.2.0"}
+>>>>>>> origin/codex/optimize-my-page-zy1m9v
