@@ -1,0 +1,5 @@
+[
+  {"id":"monthly","title":"Monthly","price":"$19","features":["HD export","Priority queue","Commercial license"],"cta":"Subscribe","badge":"Popular"},
+  {"id":"credits","title":"Credits","price":"$10/200","features":["Pay as you go","No expiry within 12 months"],"cta":"Buy"},
+  {"id":"lifetime","title":"Lifetime","price":"$199","features":["Forever access","All core features","Future updates"],"cta":"Purchase","badge":"Best Value"}
+]

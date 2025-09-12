@@ -1,0 +1,13 @@
+@import './theme.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.btn-brand {
+  @apply inline-flex items-center justify-center rounded-xl px-4 py-2 font-semibold text-fg-white bg-brand hover:opacity-90;
+}
+.card-zoom { transform: translateZ(0); transition: transform .18s ease-out, box-shadow .18s; }
+.card-zoom:hover { transform: scale(1.18); box-shadow: 0 6px 24px rgba(0,0,0,.08); }
+@media (hover: none) { .card-zoom:hover { transform: none; box-shadow:none; } }
+@media (prefers-reduced-motion: reduce) { .card-zoom { transition: none; } }

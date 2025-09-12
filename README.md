@@ -1,84 +1,67 @@
-# FastAPI 应用模板
+# ObjectForge — Image & Video Commerce Studio (MVP)
 
-这是一个基于 FastAPI 的 Python 应用模板，适合用于快速开发 API 服务。项目结构清晰，包含开发常用的各类组件，适合 C++ 转 Python 的开发者入门。
+> 基于模板与图库的一键改图平台。前端 **Vite/React/TS/Tailwind**，后端 **FastAPI (Python 3.10.9)**。  
+> 特色：左侧功能卡自动轮播、右侧效果对比（上传→抠图→下载）；文生图内容页（左：生成+对话，右：图片墙可放大阅览）；图片广场（瀑布流）；评价轮播；计费页（包月/积分/终身）。  
+> **色板**：严格使用 Claude 色系；高亮 `#2B83DA`，NEW 红 `#E53935`。
 
-## 项目结构说明
+## Monorepo
 
-```
-fastapi-app
-├── app
-│   ├── main.py               # 应用入口，启动 FastAPI 服务
-│   ├── api
-│   │   └── routes.py         # 路由定义，所有接口都在这里注册
-│   ├── models
-│   │   └── models.py         # 数据模型，使用 Pydantic 进行数据校验和类型定义
-│   ├── services
-│   │   └── service.py        # 业务逻辑层，处理具体功能
-│   └── dependencies
-│       └── deps.py           # 依赖注入与共享功能，例如数据库连接等
-├── requirements.txt           # 项目依赖库列表，安装用
-├── README.md                  # 项目说明文档
-└── .env                       # 环境变量配置文件（如数据库连接、密钥等）
-```
+objectforge/
+├─ objectforge-api/ # FastAPI 后端（/api）
+└─ objectforge-web/ # 前端 (Vite + React + TS)
 
-> **说明：**  
-> - Python 的项目结构类似于 C++ 的模块划分，`app` 目录下是主要代码。  
-> - `main.py` 类似于 C++ 的 `main.cpp`，是程序入口。  
-> - 路由（API接口）都在 `api/routes.py` 里注册。  
-> - 数据模型用 Pydantic，类似 C++ 的结构体，但支持自动校验和类型转换。  
-> - 业务逻辑建议放在 `services/service.py`，便于维护和测试。  
-> - 依赖注入（如数据库连接）统一放在 `dependencies/deps.py`，方便管理。
+## 快速开始
 
-## 依赖安装
-
-请先安装 Python 3.10 及以上版本，然后在项目根目录下运行：
-
-```
+### 后端
+```bash
+cd objectforge-api
+python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
+# 复制 .env.example -> .env 并填入本地配置
+uvicorn app:app --reload --port 8000
 ```
 
-> **说明：**  
-> - `requirements.txt` 里列出了所有需要的第三方库，类似 C++ 的第三方依赖。  
-> - 推荐使用虚拟环境（如 venv）隔离依赖，避免和系统 Python 冲突。
-
-## 启动应用
-
-在项目根目录下运行以下命令启动 FastAPI 服务：
-
-```
-uvicorn app.main:app --reload
+### 前端
+```bash
+cd objectforge-web
+npm i
+npm run dev
+# 打开 http://localhost:5173
+# Vite 将 /api 代理到 FastAPI (localhost:8000)
 ```
 
-> **说明：**  
-> - `uvicorn` 是 FastAPI 推荐的运行服务器。  
-> - `--reload` 表示开发模式，修改代码后自动重启服务。
+## API（MVP）
 
-## API 文档
+- `POST /api/v1/bg/remove`：抠图（rembg），入参：`image_file` 或 `image_url`；出：`image/png`
+- `GET /features`：功能清单（含 `availability`/`isNew`/`newBadgeUntil`/`releaseAt`/`group`/`tags`）
+- `GET /gallery`：图片广场数据
+- `GET /reviews`：用户评价（10条）
+- `GET /pricing`：计费方案
+- `GET /i18n/{lang}.json`：国际化词条（en/zh）
 
-服务启动后，访问以下地址可查看自动生成的接口文档：
+## 设计规范
 
-```
-http://127.0.0.1:8000/docs
-```
+- 颜色（Claude 色板）：全部通过 CSS 变量与 Tailwind 扩展；按钮/标签/高亮仅用 `--brand`，点缀 `--accent-2`/`--accent-1`，NEW 用 `--new`。
+- Header：下滑隐藏；上滑或鼠标靠近顶部 80px 显示；无操作 3s 自动隐藏；输入聚焦时常驻。
+- Sidebar：圆形 56px，热门/推荐/全部；隐藏时内容区自适应变宽。
+- 所有能直达功能操作页的入口右上角保留 NEW 位（24×14 占位，不显示也保留）；Coming Soon 显示“敬请期待 + 上线日期”。
 
-> **说明：**  
-> - FastAPI 会自动生成 Swagger 文档，方便调试和测试接口。
+## 安全
 
-## 环境变量配置
+- `.env` 文件不入库；改用 `.env.example` 提供示例变量。
+- 若曾提交过真实密钥，请立刻旋转密钥并（可选）用 `git filter-repo` 清理历史。
 
-请在 `.env` 文件中配置数据库连接、密钥等敏感信息。例如：
+## 许可证
 
-```
-DB_URL=postgresql://user:pass@localhost:5432/dbname
-SECRET_KEY=your_secret_key
-```
+MIT
 
-> **说明：**  
-> - 不要把敏感信息写在代码里，统一放在 `.env` 文件，类似 C++ 的配置文件。
+---
 
-## 贡献说明
+# D. 验收（本步骤完成即视为通过）
 
-欢迎 Fork 本项目并提交 Pull Request，完善功能或修复问题。
-
-> **建议：**  
-> - Python 代码风格推荐使用 PEP8，建议安装 `black` 和 `ruff` 工具自动格式化和检查 
+- [ ] 根目录**不再出现** `.env`；`git status` 显示 `.env` 为 **未跟踪**（被忽略）。  
+- [ ] 有新的 `.env.example`，内容包含前后端所需示例键。  
+- [ ] `.gitignore` 新增了 `.env` 与 `.env.*` 规则。  
+- [ ] 如曾推送敏感值：已完成密钥旋转，并评估是否执行历史清理（A3）。  
+- [ ] 新 PR 已创建：`chore(security): sanitize env handling (.env ignored, example added)`。  
+- [ ] README 已替换为 ObjectForge 专属版本（启动步骤、色板、交互与 API 均对齐我们的规范）。

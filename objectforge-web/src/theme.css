@@ -1,0 +1,12 @@
+:root{
+  --bg-1:#F5F4ED; --bg-2:#FAF0F5; --bg-3:#EBE9DD; --bg-4:#EEEADD; --bg-5:#F0EEE6;
+  --bg-6:#DCD5C0; --bg-7:#BDB198; --bg-white:#FFFFFF; --bg-9:#F5F5F5;
+  --fg-1:#141413; --fg-2:#23272D; --fg-black:#000000; --fg-white:#FFFFFF;
+  --brand:#2B83DA; --accent-1:#754F31; --accent-2:#409EFF;
+  --new:#E53935; /* 右上角 NEW 红 */
+}
+html,body{ background:var(--bg-1); color:var(--fg-1); }
+
+@media (prefers-reduced-motion: reduce){
+  *{transition:none !important;animation:none !important;}
+}

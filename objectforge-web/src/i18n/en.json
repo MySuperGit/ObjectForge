@@ -1,0 +1,9 @@
+{
+  "nav": { "home": "Home", "plaza": "Plaza", "reviews": "Reviews", "pricing": "Pricing" },
+  "cta": { "start": "Start", "upload": "Upload image", "download": "Download", "goOperate": "Go to Operation Center" },
+  "status": { "comingSoon": "Coming soon: {{date}}" },
+  "sidebar": { "hot": "Hot", "recommend": "Recommend", "all": "All" },
+  "buttons": { "login": "Login", "register": "Register" },
+  "footer": { "help": "Help", "terms": "Terms", "privacy": "Privacy" }
+}
+
