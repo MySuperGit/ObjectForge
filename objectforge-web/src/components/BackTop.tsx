@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 export default function BackTop() {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   const [visible, setVisible] = useState(false)
   useEffect(() => {
     const handler = () => setVisible(window.scrollY > 600)
@@ -17,6 +18,8 @@ export default function BackTop() {
 =======
 =======
 >>>>>>> pr-local-swagger
+=======
+>>>>>>> pr-ui-cors
   const [show, setShow] = useState(false)
   useEffect(() => {
     const onScroll = () => setShow(window.scrollY > 600)
@@ -31,9 +34,12 @@ export default function BackTop() {
       className="fixed right-5 bottom-6 w-10 h-10 rounded-full shadow-card bg-brand text-fg-white hover:scale-105 transition"
       aria-label="Back to top"
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> origin/codex/optimize-my-page-zy1m9v
 =======
 >>>>>>> pr-local-swagger
+=======
+>>>>>>> pr-ui-cors
     >
       ↑
     </button>

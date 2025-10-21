@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next'
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { useUIStore } from '../store/ui'
 
 export default function LanguageSwitcher() {
@@ -23,6 +24,8 @@ export default function LanguageSwitcher() {
 =======
 import http from '../lib/http'
 >>>>>>> pr-local-swagger
+=======
+>>>>>>> pr-ui-cors
 
 export default function LanguageSwitcher() {
   const { i18n } = useTranslation()
@@ -33,18 +36,24 @@ export default function LanguageSwitcher() {
     await i18n.changeLanguage(lng)
     try {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> pr-ui-cors
       const API_BASE = import.meta.env.VITE_API_BASE || '/api'
       const r = await fetch(`${API_BASE}/i18n/${lng}.json`, { cache: 'no-store' })
       if (r.ok) {
         const json = await r.json()
         i18n.addResources(lng, 'translation', json)
       }
+<<<<<<< HEAD
 =======
       const response = await http.get(`/i18n/${lng}.json`, {
         headers: { 'Cache-Control': 'no-store', 'X-Skip-Toast': '1' },
       })
       i18n.addResources(lng, 'translation', response.data)
 >>>>>>> pr-local-swagger
+=======
+>>>>>>> pr-ui-cors
     } catch {}
   }
 
@@ -65,6 +74,9 @@ export default function LanguageSwitcher() {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> origin/codex/optimize-my-page-zy1m9v
 =======
 >>>>>>> pr-local-swagger
+=======
+>>>>>>> pr-ui-cors

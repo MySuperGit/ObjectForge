@@ -4,6 +4,7 @@ export const mockFeatures: Feature[] = [
   {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     id: 1,
     title: 'Feature A',
     description: 'Description A',
@@ -24,6 +25,8 @@ export const mockFeatures: Feature[] = [
 =======
 =======
 >>>>>>> pr-local-swagger
+=======
+>>>>>>> pr-ui-cors
     id: 'bg-remove',
     title: 'Background Remove',
     slug: 'remove-bg',
@@ -46,8 +49,11 @@ export const mockFeatures: Feature[] = [
     isNew: true,
     newBadgeUntil: '2026-06-01'
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> origin/codex/optimize-my-page-zy1m9v
 =======
 >>>>>>> pr-local-swagger
+=======
+>>>>>>> pr-ui-cors
   }
 ]

@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 interface Props {
   show?: boolean
   until?: string | Date
@@ -21,6 +22,8 @@ export default function NewBadge({ show = false, until }: Props) {
 =======
 =======
 >>>>>>> pr-local-swagger
+=======
+>>>>>>> pr-ui-cors
 type Props = { isNew?: boolean; until?: string }
 export default function NewBadge({ isNew, until }: Props) {
   const now = new Date()
@@ -34,6 +37,9 @@ export default function NewBadge({ isNew, until }: Props) {
   )
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> origin/codex/optimize-my-page-zy1m9v
 =======
 >>>>>>> pr-local-swagger
+=======
+>>>>>>> pr-ui-cors

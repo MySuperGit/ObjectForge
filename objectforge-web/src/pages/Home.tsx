@@ -1,6 +1,7 @@
 import { useState } from 'react'
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { useQuery } from '@tanstack/react-query'
 import Carousel from '../components/Carousel'
 import FeatureCard from '../components/FeatureCard'
@@ -22,6 +23,8 @@ export default function Home() {
 =======
 =======
 >>>>>>> pr-local-swagger
+=======
+>>>>>>> pr-ui-cors
 import { useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import Carousel from '../components/Carousel'
@@ -40,15 +43,19 @@ export default function Home() {
   const { t } = useTranslation()
   const nav = useNavigate()
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> origin/codex/optimize-my-page-zy1m9v
 =======
 >>>>>>> pr-local-swagger
+=======
+>>>>>>> pr-ui-cors
 
   const onUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
     if (!file) return
     setOrig(URL.createObjectURL(file))
     try {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
       const blob = await api.removeBg(file)
@@ -58,6 +65,9 @@ export default function Home() {
 =======
       const blob = await removeBg(file)
 >>>>>>> pr-local-swagger
+=======
+      const blob = await removeBg(file)
+>>>>>>> pr-ui-cors
       setResult(URL.createObjectURL(blob))
     } catch (e) {
       // ignore
@@ -71,21 +81,27 @@ export default function Home() {
     const ctx = canvas.getContext('2d')!
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     ctx.fillStyle = '#2B83DA'
     ctx.fillRect(0, 0, size, size)
     ctx.fillStyle = '#fff'
 =======
 =======
 >>>>>>> pr-local-swagger
+=======
+>>>>>>> pr-ui-cors
     const brand = getComputedStyle(document.documentElement).getPropertyValue('--brand')
     const white = getComputedStyle(document.documentElement).getPropertyValue('--fg-white')
     ctx.fillStyle = brand
     ctx.fillRect(0, 0, size, size)
     ctx.fillStyle = white
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> origin/codex/optimize-my-page-zy1m9v
 =======
 >>>>>>> pr-local-swagger
+=======
+>>>>>>> pr-ui-cors
     ctx.beginPath()
     ctx.arc(size / 2, size / 2, 50, 0, Math.PI * 2)
     ctx.fill()
@@ -96,6 +112,7 @@ export default function Home() {
     const ctx2 = canvas2.getContext('2d')!
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     ctx2.fillStyle = '#2B83DA'
 =======
     ctx2.fillStyle = brand
@@ -103,6 +120,9 @@ export default function Home() {
 =======
     ctx2.fillStyle = brand
 >>>>>>> pr-local-swagger
+=======
+    ctx2.fillStyle = brand
+>>>>>>> pr-ui-cors
     ctx2.beginPath()
     ctx2.arc(size / 2, size / 2, 50, 0, Math.PI * 2)
     ctx2.fill()
@@ -118,6 +138,7 @@ export default function Home() {
       <div>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         <div className="mb-2 flex gap-2">
           <input type="file" accept="image/*" onChange={onUpload} />
           <button
@@ -127,6 +148,8 @@ export default function Home() {
 =======
 =======
 >>>>>>> pr-local-swagger
+=======
+>>>>>>> pr-ui-cors
         <div className="mb-2 flex gap-2 items-center flex-wrap">
           <label htmlFor="upload" className="sr-only">
             Upload image for background removal
@@ -134,9 +157,12 @@ export default function Home() {
           <input id="upload" type="file" accept="image/*" onChange={onUpload} />
           <button onClick={useSample} className="px-3 py-1 rounded bg-accent2 text-fg-white">
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> origin/codex/optimize-my-page-zy1m9v
 =======
 >>>>>>> pr-local-swagger
+=======
+>>>>>>> pr-ui-cors
             Use Sample
           </button>
           {result && (
@@ -150,9 +176,12 @@ export default function Home() {
           )}
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> pr-local-swagger
+=======
+>>>>>>> pr-ui-cors
           <button
             className="btn-brand ml-auto"
             onClick={() => nav('/features/remove-bg')}
@@ -160,9 +189,12 @@ export default function Home() {
             {t('cta.goOperate')}
           </button>
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> origin/codex/optimize-my-page-zy1m9v
 =======
 >>>>>>> pr-local-swagger
+=======
+>>>>>>> pr-ui-cors
         </div>
         {orig && result ? (
           <CompareSlider

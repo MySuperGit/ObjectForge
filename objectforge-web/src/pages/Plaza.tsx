@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { useState } from 'react'
 import Masonry from 'react-masonry-css'
 import Lightbox from 'yet-another-react-lightbox'
@@ -65,17 +66,24 @@ export default function Plaza() {
 =======
 =======
 >>>>>>> pr-local-swagger
+=======
+>>>>>>> pr-ui-cors
 import { useEffect, useMemo, useState } from 'react'
 import Masonry from 'react-masonry-css'
 import Lightbox from 'yet-another-react-lightbox'
 import 'yet-another-react-lightbox/styles.css'
 import { useAppear } from '../hooks/useAppear'
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 const API_BASE = import.meta.env.VITE_API_BASE || '/api'
 =======
 import http from '../lib/http'
 >>>>>>> pr-local-swagger
+=======
+
+const API_BASE = import.meta.env.VITE_API_BASE || '/api'
+>>>>>>> pr-ui-cors
 type Item = { id:string; thumb:string; full:string; tags?:string[]; author?:string }
 
 const TABS = ['图库','灵感','热门','节日','技术'] as const
@@ -97,6 +105,7 @@ export default function Plaza() {
 
   useEffect(() => {
 <<<<<<< HEAD
+<<<<<<< HEAD
     fetch(`${API_BASE}/gallery`).then(r => r.json()).then(setList).catch(() => setList([]))
 =======
     let cancelled = false
@@ -115,6 +124,9 @@ export default function Plaza() {
       cancelled = true
     }
 >>>>>>> pr-local-swagger
+=======
+    fetch(`${API_BASE}/gallery`).then(r => r.json()).then(setList).catch(() => setList([]))
+>>>>>>> pr-ui-cors
   }, [])
 
   const filtered = useMemo(() => {
@@ -134,13 +146,17 @@ export default function Plaza() {
             className={`px-3 py-1.5 rounded-xl text-sm border ${t===tab ? 'bg-brand text-fg-white border-transparent' : 'bg-bg-white border-bg-9'}`}
             onClick={() => setTab(t)}>{t}</button>
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> origin/codex/optimize-my-page-zy1m9v
 =======
 >>>>>>> pr-local-swagger
+=======
+>>>>>>> pr-ui-cors
         ))}
       </div>
 
       <Masonry
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
         breakpointCols={breakpointColumns}
@@ -175,6 +191,8 @@ export default function Plaza() {
 =======
 =======
 >>>>>>> pr-local-swagger
+=======
+>>>>>>> pr-ui-cors
         breakpointCols={breakpointCols}
         className="flex gap-4"
         columnClassName="space-y-4"
@@ -203,6 +221,9 @@ function PlazaCard({ it, onClick }: { it: Item; onClick: () => void }) {
   )
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> origin/codex/optimize-my-page-zy1m9v
 =======
 >>>>>>> pr-local-swagger
+=======
+>>>>>>> pr-ui-cors

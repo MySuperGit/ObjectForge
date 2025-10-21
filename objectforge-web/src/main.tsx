@@ -5,11 +5,14 @@ import App from './app'
 import queryClient from './lib/queryClient'
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import './theme.css'
 =======
 >>>>>>> origin/codex/optimize-my-page-zy1m9v
 =======
 >>>>>>> pr-local-swagger
+=======
+>>>>>>> pr-ui-cors
 import './index.css'
 import './i18n'
 

@@ -6,9 +6,12 @@ export function cn(...inputs: ClassValue[]) {
 }
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> pr-local-swagger
+=======
+>>>>>>> pr-ui-cors
 
 import type { Feature } from './types'
 
@@ -19,6 +22,9 @@ export function isFeatureNew(f: Feature) {
   )
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> origin/codex/optimize-my-page-zy1m9v
 =======
 >>>>>>> pr-local-swagger
+=======
+>>>>>>> pr-ui-cors

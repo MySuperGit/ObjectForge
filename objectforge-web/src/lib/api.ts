@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 export const api = {
   get: (url: string, options?: RequestInit) =>
     fetch(`/api${url}`, options).then((r) => r.json()),
@@ -14,6 +15,10 @@ export const api = {
 =======
 import { useQuery } from '@tanstack/react-query'
 import type { Feature, Plan } from './types'
+=======
+import { useQuery } from '@tanstack/react-query'
+import type { Feature } from './types'
+>>>>>>> pr-ui-cors
 
 const API_BASE = import.meta.env.VITE_API_BASE || '/api'
 
@@ -41,6 +46,7 @@ export async function fetchFeatures(): Promise<Feature[]> {
   const r = await fetch(`${API_BASE}/features`, { cache: 'no-store' })
   if (!r.ok) throw new Error('Failed to load features')
   return r.json()
+<<<<<<< HEAD
 =======
 import { useQuery } from '@tanstack/react-query'
 import http from './http'
@@ -59,12 +65,15 @@ export async function fetchFeatures(): Promise<Feature[]> {
   })
   return response.data
 >>>>>>> pr-local-swagger
+=======
+>>>>>>> pr-ui-cors
 }
 
 export function useFeatures() {
   return useQuery({ queryKey: ['features'], queryFn: fetchFeatures, staleTime: 60_000 })
 }
 
+<<<<<<< HEAD
 export async function fetchPricing(): Promise<Plan[]> {
 <<<<<<< HEAD
   const r = await fetch(`${API_BASE}/pricing`, { cache: 'no-store' })
@@ -88,3 +97,6 @@ export const api = { get, removeBg }
 =======
 export const api = { removeBg }
 >>>>>>> pr-local-swagger
+=======
+export const api = { get, removeBg }
+>>>>>>> pr-ui-cors

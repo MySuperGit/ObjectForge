@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { useState } from 'react'
 import * as Tooltip from '@radix-ui/react-tooltip'
 import { Flame, ThumbsUp, List } from 'lucide-react'
@@ -51,6 +52,8 @@ export default function Sidebar() {
 =======
 =======
 >>>>>>> pr-local-swagger
+=======
+>>>>>>> pr-ui-cors
 import { Link, useLocation } from 'react-router-dom'
 import { useFeatures } from '../lib/api'
 import { useUI } from '../store/ui'
@@ -114,13 +117,17 @@ export default function Sidebar() {
             })}
         </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> origin/codex/optimize-my-page-zy1m9v
 =======
 >>>>>>> pr-local-swagger
+=======
+>>>>>>> pr-ui-cors
       </div>
     </aside>
   )
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 
@@ -128,3 +135,5 @@ export default function Sidebar() {
 >>>>>>> origin/codex/optimize-my-page-zy1m9v
 =======
 >>>>>>> pr-local-swagger
+=======
+>>>>>>> pr-ui-cors

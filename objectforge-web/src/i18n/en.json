@@ -1,6 +1,7 @@
 {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   "nav": {
     "home": "Home",
     "features": "Features",
@@ -20,6 +21,8 @@
 =======
 =======
 >>>>>>> pr-local-swagger
+=======
+>>>>>>> pr-ui-cors
   "nav": { "home": "Home", "plaza": "Plaza", "reviews": "Reviews", "pricing": "Pricing" },
   "cta": { "start": "Start", "upload": "Upload image", "download": "Download", "goOperate": "Go to Operation Center" },
   "status": { "comingSoon": "Coming soon: {{date}}" },
@@ -27,8 +30,11 @@
   "buttons": { "login": "Login", "register": "Register" },
   "footer": { "help": "Help", "terms": "Terms", "privacy": "Privacy" }
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> origin/codex/optimize-my-page-zy1m9v
 =======
 >>>>>>> pr-local-swagger
+=======
+>>>>>>> pr-ui-cors
 }
 

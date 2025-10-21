@@ -1,6 +1,12 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { pricingPlans, faqs } from '../lib/pricing.mock'
+=======
+import { pricingPlans as mockPlans, faqs as mockFaqs } from '../lib/pricing.mock'
+import { useQuery } from '@tanstack/react-query'
+import { api } from '../lib/api'
+>>>>>>> pr-ui-cors
 import {
   Accordion,
   AccordionItem,
@@ -9,10 +15,26 @@ import {
 } from '../components/ui/accordion'
 
 export default function Pricing() {
+<<<<<<< HEAD
   return (
     <div className="p-4 space-y-8">
       <div className="grid gap-6 md:grid-cols-3">
         {pricingPlans.map((p) => (
+=======
+  const { data: plans = mockPlans } = useQuery({
+    queryKey: ['pricing'],
+    queryFn: () => api.get('/pricing').catch(() => mockPlans)
+  })
+  const { data: faqs = mockFaqs } = useQuery({
+    queryKey: ['pricing-faq'],
+    queryFn: () => Promise.resolve(mockFaqs)
+  })
+
+  return (
+    <div className="p-4 space-y-8">
+      <div className="grid gap-6 md:grid-cols-3">
+        {plans.map((p) => (
+>>>>>>> pr-ui-cors
           <div
             key={p.id}
             className="rounded border bg-bg-9 p-6 shadow-card flex flex-col"
@@ -43,6 +65,7 @@ export default function Pricing() {
       </section>
     </div>
   )
+<<<<<<< HEAD
 export default function Pricing() {
   return <div className="p-4">Pricing</div>
 =======
@@ -110,4 +133,6 @@ export default function Pricing() {
 >>>>>>> origin/codex/optimize-my-page-zy1m9v
 =======
 >>>>>>> pr-local-swagger
+=======
+>>>>>>> pr-ui-cors
 }

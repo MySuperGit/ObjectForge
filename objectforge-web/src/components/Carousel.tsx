@@ -8,6 +8,7 @@ interface Props {
 export default function Carousel({ slides }: Props) {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   const prefersReduce =
     typeof window !== 'undefined' &&
@@ -18,6 +19,11 @@ export default function Carousel({ slides }: Props) {
     typeof window !== 'undefined' &&
     window.matchMedia('(prefers-reduced-motion: reduce)').matches
 >>>>>>> pr-local-swagger
+=======
+  const prefersReduce =
+    typeof window !== 'undefined' &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches
+>>>>>>> pr-ui-cors
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true })
   const timer = useRef<number>()
 
@@ -28,6 +34,7 @@ export default function Carousel({ slides }: Props) {
   const play = useCallback(() => {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     if (!emblaApi) return
     stop()
     timer.current = window.setInterval(() => emblaApi.scrollNext(), 3000)
@@ -35,14 +42,19 @@ export default function Carousel({ slides }: Props) {
 =======
 =======
 >>>>>>> pr-local-swagger
+=======
+>>>>>>> pr-ui-cors
     if (!emblaApi || prefersReduce) return
     stop()
     timer.current = window.setInterval(() => emblaApi.scrollNext(), 3000)
   }, [emblaApi, stop, prefersReduce])
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> origin/codex/optimize-my-page-zy1m9v
 =======
 >>>>>>> pr-local-swagger
+=======
+>>>>>>> pr-ui-cors
 
   useEffect(() => {
     play()
@@ -50,6 +62,7 @@ export default function Carousel({ slides }: Props) {
   }, [play, stop])
 
   return (
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     <div
@@ -68,6 +81,8 @@ export default function Carousel({ slides }: Props) {
 =======
 =======
 >>>>>>> pr-local-swagger
+=======
+>>>>>>> pr-ui-cors
     <div className="relative" aria-roledescription="carousel">
       <div
         className="overflow-hidden"
@@ -98,9 +113,12 @@ export default function Carousel({ slides }: Props) {
         ›
       </button>
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> origin/codex/optimize-my-page-zy1m9v
 =======
 >>>>>>> pr-local-swagger
+=======
+>>>>>>> pr-ui-cors
     </div>
   )
 }

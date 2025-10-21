@@ -14,6 +14,7 @@ objectforge/
 
 ### 后端
 <<<<<<< HEAD
+<<<<<<< HEAD
 
   ```bash
   cd objectforge-api
@@ -63,6 +64,8 @@ MIT
 ## D. 验收（本步骤完成即视为通过）
 
 =======
+=======
+>>>>>>> pr-ui-cors
 ```bash
 cd objectforge-api
 python -m venv .venv && source .venv/bin/activate
@@ -109,7 +112,10 @@ MIT
 
 # D. 验收（本步骤完成即视为通过）
 
+<<<<<<< HEAD
 >>>>>>> pr-local-swagger
+=======
+>>>>>>> pr-ui-cors
 - [ ] 根目录**不再出现** `.env`；`git status` 显示 `.env` 为 **未跟踪**（被忽略）。  
 - [ ] 有新的 `.env.example`，内容包含前后端所需示例键。  
 - [ ] `.gitignore` 新增了 `.env` 与 `.env.*` 规则。  

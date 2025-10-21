@@ -2,6 +2,7 @@ fastapi==0.110.0
 uvicorn[standard]==0.29.0
 rembg==2.0.53
 requests==2.32.3
+<<<<<<< HEAD
 httpx==0.27.0
 python-multipart==0.0.9
 pydantic-settings==2.4.0
@@ -12,3 +13,6 @@ opencv-python-headless==4.10.0.84
 =======
 swagger-ui-bundle==0.0.9
 >>>>>>> pr-local-swagger
+=======
+python-multipart==0.0.9
+>>>>>>> pr-ui-cors

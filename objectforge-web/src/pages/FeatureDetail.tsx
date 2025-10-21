@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import PhotoAlbum, { Photo, RenderPhotoProps } from 'react-photo-album'
@@ -86,17 +87,24 @@ export default function FeatureDetail() {
 =======
 =======
 >>>>>>> pr-local-swagger
+=======
+>>>>>>> pr-ui-cors
 import { useEffect, useMemo, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import Lightbox from 'yet-another-react-lightbox'
 import 'yet-another-react-lightbox/styles.css'
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 const API_BASE = import.meta.env.VITE_API_BASE || '/api'
 =======
 import http from '../lib/http'
 >>>>>>> pr-local-swagger
+=======
+
+const API_BASE = import.meta.env.VITE_API_BASE || '/api'
+>>>>>>> pr-ui-cors
 
 type GItem = { id: string; thumb: string; full: string; tags?: string[]; author?: string }
 
@@ -109,6 +117,7 @@ export default function FeatureDetail() {
   const [index, setIndex] = useState(0)
 
   useEffect(() => {
+<<<<<<< HEAD
 <<<<<<< HEAD
     fetch(`${API_BASE}/gallery`).then(r => r.json()).then(setGallery).catch(()=>setGallery([]))
 =======
@@ -128,6 +137,9 @@ export default function FeatureDetail() {
       cancelled = true
     }
 >>>>>>> pr-local-swagger
+=======
+    fetch(`${API_BASE}/gallery`).then(r => r.json()).then(setGallery).catch(()=>setGallery([]))
+>>>>>>> pr-ui-cors
   }, [])
 
   const slides = useMemo(() => gallery.map(g => ({ src: g.full })), [gallery])
@@ -194,13 +206,17 @@ export default function FeatureDetail() {
 
         <Lightbox open={open} close={() => setOpen(false)} slides={slides} index={index} carousel={{ finite: false }} />
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> origin/codex/optimize-my-page-zy1m9v
 =======
 >>>>>>> pr-local-swagger
+=======
+>>>>>>> pr-ui-cors
       </div>
     </div>
   )
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 
@@ -218,3 +234,5 @@ function ImageWrapper({ photo, renderDefaultPhoto, wrapperStyle }: RenderPhotoPr
 >>>>>>> origin/codex/optimize-my-page-zy1m9v
 =======
 >>>>>>> pr-local-swagger
+=======
+>>>>>>> pr-ui-cors

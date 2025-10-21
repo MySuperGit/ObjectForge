@@ -12,6 +12,7 @@ export default function Footer() {
         <div className="space-y-1">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
           <a href="#" className="block hover:underline" target="_blank" rel="noreferrer">
             {t('footer.help')}
           </a>
@@ -22,6 +23,8 @@ export default function Footer() {
 =======
 =======
 >>>>>>> pr-local-swagger
+=======
+>>>>>>> pr-ui-cors
           <a href="/help" className="block hover:underline">
             {t('footer.help')}
           </a>
@@ -30,9 +33,12 @@ export default function Footer() {
           </a>
           <a href="/privacy" className="block hover:underline">
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> origin/codex/optimize-my-page-zy1m9v
 =======
 >>>>>>> pr-local-swagger
+=======
+>>>>>>> pr-ui-cors
             {t('footer.privacy')}
           </a>
         </div>
@@ -43,6 +49,7 @@ export default function Footer() {
           <div className="flex gap-3">
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             <a href="#" aria-label="twitter" className="hover:underline">
               Twitter
             </a>
@@ -50,14 +57,19 @@ export default function Footer() {
 =======
 =======
 >>>>>>> pr-local-swagger
+=======
+>>>>>>> pr-ui-cors
             <a href="https://twitter.com" aria-label="twitter" className="hover:underline" target="_blank" rel="noreferrer">
               Twitter
             </a>
             <a href="https://github.com" aria-label="github" className="hover:underline" target="_blank" rel="noreferrer">
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> origin/codex/optimize-my-page-zy1m9v
 =======
 >>>>>>> pr-local-swagger
+=======
+>>>>>>> pr-ui-cors
               GitHub
             </a>
           </div>

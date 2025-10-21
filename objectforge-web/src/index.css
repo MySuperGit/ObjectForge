@@ -1,11 +1,14 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 =======
 =======
 >>>>>>> pr-local-swagger
+=======
+>>>>>>> pr-ui-cors
 @import './theme.css';
 
 @tailwind base;
@@ -20,6 +23,9 @@
 @media (hover: none) { .card-zoom:hover { transform: none; box-shadow:none; } }
 @media (prefers-reduced-motion: reduce) { .card-zoom { transition: none; } }
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> origin/codex/optimize-my-page-zy1m9v
 =======
 >>>>>>> pr-local-swagger
+=======
+>>>>>>> pr-ui-cors
