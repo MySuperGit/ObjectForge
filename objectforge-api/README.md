@@ -1,6 +1,7 @@
 # ObjectForge API
 
 ## Setup
+
 ```bash
 cd objectforge-api
 python -m venv .venv && source .venv/bin/activate

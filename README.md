@@ -1,41 +1,3 @@
-<<<<<<< HEAD
-# ObjectForge
-
-Monorepo containing a FastAPI backend and a Vite + React + TypeScript frontend.
-
-## Color Palette
-All UI colors must reference the following CSS variables defined in `objectforge-web/src/theme.css`:
-
-```
-:root{
-  --bg-1:#F5F4ED; --bg-2:#FAF0F5; --bg-3:#EBE9DD; --bg-4:#EEEADD; --bg-5:#F0EEE6;
-  --bg-6:#DCD5C0; --bg-7:#BDB198; --bg-white:#FFFFFF; --bg-9:#F5F5F5;
-  --fg-1:#141413; --fg-2:#23272D; --fg-black:#000000; --fg-white:#FFFFFF;
-  --brand:#2B83DA; --accent-1:#754F31; --accent-2:#409EFF;
---new:#E53935;
-}
-```
-
-### Color & Component Guidelines
-- Always consume these variables through Tailwind classes (e.g. `bg-brand`, `text-fg-1`).
-- Primary actions use `brand`; emphasis uses `accent-2`; decorative accents use `accent-1`.
-- All feature entry points reserve a `24×14` container for a `NEW` badge using `bg-new` and `text-fg-white`.
-
-## Development
-### Backend
-```
-cd objectforge-api
-python -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt
-uvicorn app:app --reload --port 8000
-```
-
-### Frontend
-```
-cd objectforge-web
-npm install
-npm run dev
-=======
 # ObjectForge — Image & Video Commerce Studio (MVP)
 
 > 基于模板与图库的一键改图平台。前端 **Vite/React/TS/Tailwind**，后端 **FastAPI (Python 3.10.9)**。  
@@ -51,42 +13,25 @@ objectforge/
 ## 快速开始
 
 ### 后端
-```bash
-cd objectforge-api
-python -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt
-# 复制 .env.example -> .env 并填入本地配置
-uvicorn app:app --reload --port 8000
-```
+
+  ```bash
+  cd objectforge-api
+  python -m venv .venv && source .venv/bin/activate
+  pip install -r requirements.txt
+  # 复制 .env.example -> .env 并填入本地配置
+  uvicorn app:app --reload --port 8000
+  ```
 
 ### 前端
-```bash
-cd objectforge-web
-npm i
-npm run dev
-# 打开 http://localhost:5173
-# Vite 将 /api 代理到 FastAPI (localhost:8000)
->>>>>>> origin/codex/optimize-my-page-zy1m9v
-```
-Vite proxies `/api` requests to the FastAPI server running on port `8000`.
 
-<<<<<<< HEAD
-## API Routes
-- `GET /healthz`
-- `GET /features`
-- `GET /gallery`
-- `GET /reviews`
-- `GET /pricing`
-- `GET /i18n/{lang}.json`
-- `POST /api/v1/bg/remove`
+  ```bash
+  cd objectforge-web
+  npm i
+  npm run dev
+  # 打开 http://localhost:5173
+  # Vite 将 /api 代理到 FastAPI (localhost:8000)
 
-## UI Conventions
-- Header hides on scroll down, shows on scroll up or when the cursor nears the top 80 px, and auto-hides after 3 s of idle. Inputs keep it visible.
-- Sidebar provides circular buttons with Hot/Recommended/All filters and collapses to free content width.
-- Every link to a feature reserves a `24×14` container for a red `NEW` badge.
-- Coming Soon features appear greyed with a tooltip showing the planned release date.
 
-=======
 ## API（MVP）
 
 - `POST /api/v1/bg/remove`：抠图（rembg），入参：`image_file` 或 `image_url`；出：`image/png`
@@ -114,7 +59,7 @@ MIT
 
 ---
 
-# D. 验收（本步骤完成即视为通过）
+## D. 验收（本步骤完成即视为通过）
 
 - [ ] 根目录**不再出现** `.env`；`git status` 显示 `.env` 为 **未跟踪**（被忽略）。  
 - [ ] 有新的 `.env.example`，内容包含前后端所需示例键。  
@@ -122,4 +67,3 @@ MIT
 - [ ] 如曾推送敏感值：已完成密钥旋转，并评估是否执行历史清理（A3）。  
 - [ ] 新 PR 已创建：`chore(security): sanitize env handling (.env ignored, example added)`。  
 - [ ] README 已替换为 ObjectForge 专属版本（启动步骤、色板、交互与 API 均对齐我们的规范）。
->>>>>>> origin/codex/optimize-my-page-zy1m9v
