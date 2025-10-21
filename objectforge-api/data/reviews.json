@@ -1,0 +1,12 @@
+[
+  {"id":"r1","user":"Alice","rating":5,"content":"Great results for product cutouts!","country":"US"},
+  {"id":"r2","user":"Bob","rating":5,"content":"Fast and clean background removal.","country":"DE"},
+  {"id":"r3","user":"Carol","rating":4,"content":"Good quality.","country":"UK"},
+  {"id":"r4","user":"Dave","rating":5,"content":"Very helpful!","country":"CA"},
+  {"id":"r5","user":"Eve","rating":5,"content":"Amazing tool!","country":"FR"},
+  {"id":"r6","user":"Frank","rating":4,"content":"Works well","country":"AU"},
+  {"id":"r7","user":"Grace","rating":5,"content":"Highly recommended","country":"US"},
+  {"id":"r8","user":"Heidi","rating":5,"content":"Excellent results","country":"JP"},
+  {"id":"r9","user":"Ivan","rating":4,"content":"Pretty good","country":"RU"},
+  {"id":"r10","user":"Judy","rating":5,"content":"Loved it!","country":"CN"}
+]
