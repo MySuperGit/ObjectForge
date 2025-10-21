@@ -13,6 +13,7 @@ objectforge/
 ## 快速开始
 
 ### 后端
+<<<<<<< HEAD
 
   ```bash
   cd objectforge-api
@@ -61,6 +62,54 @@ MIT
 
 ## D. 验收（本步骤完成即视为通过）
 
+=======
+```bash
+cd objectforge-api
+python -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+# 复制 .env.example -> .env 并填入本地配置
+uvicorn app:app --reload --port 8000
+```
+
+### 前端
+```bash
+cd objectforge-web
+npm i
+npm run dev
+# 打开 http://localhost:5173
+# Vite 将 /api 代理到 FastAPI (localhost:8000)
+```
+
+## API（MVP）
+
+- `POST /api/v1/bg/remove`：抠图（rembg），入参：`image_file` 或 `image_url`；出：`image/png`
+- `GET /features`：功能清单（含 `availability`/`isNew`/`newBadgeUntil`/`releaseAt`/`group`/`tags`）
+- `GET /gallery`：图片广场数据
+- `GET /reviews`：用户评价（10条）
+- `GET /pricing`：计费方案
+- `GET /i18n/{lang}.json`：国际化词条（en/zh）
+
+## 设计规范
+
+- 颜色（Claude 色板）：全部通过 CSS 变量与 Tailwind 扩展；按钮/标签/高亮仅用 `--brand`，点缀 `--accent-2`/`--accent-1`，NEW 用 `--new`。
+- Header：下滑隐藏；上滑或鼠标靠近顶部 80px 显示；无操作 3s 自动隐藏；输入聚焦时常驻。
+- Sidebar：圆形 56px，热门/推荐/全部；隐藏时内容区自适应变宽。
+- 所有能直达功能操作页的入口右上角保留 NEW 位（24×14 占位，不显示也保留）；Coming Soon 显示“敬请期待 + 上线日期”。
+
+## 安全
+
+- `.env` 文件不入库；改用 `.env.example` 提供示例变量。
+- 若曾提交过真实密钥，请立刻旋转密钥并（可选）用 `git filter-repo` 清理历史。
+
+## 许可证
+
+MIT
+
+---
+
+# D. 验收（本步骤完成即视为通过）
+
+>>>>>>> pr-local-swagger
 - [ ] 根目录**不再出现** `.env`；`git status` 显示 `.env` 为 **未跟踪**（被忽略）。  
 - [ ] 有新的 `.env.example`，内容包含前后端所需示例键。  
 - [ ] `.gitignore` 新增了 `.env` 与 `.env.*` 规则。  

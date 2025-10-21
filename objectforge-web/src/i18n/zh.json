@@ -1,5 +1,6 @@
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
   "nav": {
     "home": "首页",
     "features": "功能",
@@ -19,6 +20,8 @@
 }
 
 =======
+=======
+>>>>>>> pr-local-swagger
   "nav": { "home": "首页", "plaza": "图片广场", "reviews": "用户评价", "pricing": "计费" },
   "cta": { "start": "开始", "upload": "上传图片", "download": "下载", "goOperate": "进入操作中心" },
   "status": { "comingSoon": "敬请期待：{{date}}" },
@@ -26,4 +29,7 @@
   "buttons": { "login": "登录", "register": "注册" },
   "footer": { "help": "帮助", "terms": "条款", "privacy": "隐私" }
 }
+<<<<<<< HEAD
 >>>>>>> origin/codex/optimize-my-page-zy1m9v
+=======
+>>>>>>> pr-local-swagger

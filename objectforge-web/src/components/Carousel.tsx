@@ -7,11 +7,17 @@ interface Props {
 
 export default function Carousel({ slides }: Props) {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   const prefersReduce =
     typeof window !== 'undefined' &&
     window.matchMedia('(prefers-reduced-motion: reduce)').matches
 >>>>>>> origin/codex/optimize-my-page-zy1m9v
+=======
+  const prefersReduce =
+    typeof window !== 'undefined' &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches
+>>>>>>> pr-local-swagger
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true })
   const timer = useRef<number>()
 
@@ -21,16 +27,22 @@ export default function Carousel({ slides }: Props) {
 
   const play = useCallback(() => {
 <<<<<<< HEAD
+<<<<<<< HEAD
     if (!emblaApi) return
     stop()
     timer.current = window.setInterval(() => emblaApi.scrollNext(), 3000)
   }, [emblaApi, stop])
 =======
+=======
+>>>>>>> pr-local-swagger
     if (!emblaApi || prefersReduce) return
     stop()
     timer.current = window.setInterval(() => emblaApi.scrollNext(), 3000)
   }, [emblaApi, stop, prefersReduce])
+<<<<<<< HEAD
 >>>>>>> origin/codex/optimize-my-page-zy1m9v
+=======
+>>>>>>> pr-local-swagger
 
   useEffect(() => {
     play()
@@ -38,6 +50,7 @@ export default function Carousel({ slides }: Props) {
   }, [play, stop])
 
   return (
+<<<<<<< HEAD
 <<<<<<< HEAD
     <div
       className="overflow-hidden"
@@ -53,6 +66,8 @@ export default function Carousel({ slides }: Props) {
         ))}
       </div>
 =======
+=======
+>>>>>>> pr-local-swagger
     <div className="relative" aria-roledescription="carousel">
       <div
         className="overflow-hidden"
@@ -82,7 +97,10 @@ export default function Carousel({ slides }: Props) {
       >
         ›
       </button>
+<<<<<<< HEAD
 >>>>>>> origin/codex/optimize-my-page-zy1m9v
+=======
+>>>>>>> pr-local-swagger
     </div>
   )
 }

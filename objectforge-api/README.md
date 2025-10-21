@@ -1,7 +1,10 @@
 # ObjectForge API
 
 ## Setup
+<<<<<<< HEAD
 
+=======
+>>>>>>> pr-local-swagger
 ```bash
 cd objectforge-api
 python -m venv .venv && source .venv/bin/activate

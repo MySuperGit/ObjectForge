@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 export interface Feature {
   id: number
   title: string
@@ -9,6 +10,8 @@ export interface Feature {
 
 export interface Review {
 =======
+=======
+>>>>>>> pr-local-swagger
 export type FeatureGroup = 'generate' | 'edit' | 'inspire' | 'business'
 
 export type Feature = {
@@ -26,12 +29,16 @@ export type Feature = {
 }
 
 export type Review = {
+<<<<<<< HEAD
 >>>>>>> origin/codex/optimize-my-page-zy1m9v
+=======
+>>>>>>> pr-local-swagger
   id: number
   author: string
   quote: string
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 export interface PricingPlan {
   id: string
@@ -40,20 +47,31 @@ export type PlanId = 'monthly' | 'credits' | 'lifetime'
 export type Plan = {
   id: PlanId
 >>>>>>> origin/codex/optimize-my-page-zy1m9v
+=======
+export type PlanId = 'monthly' | 'credits' | 'lifetime'
+export type Plan = {
+  id: PlanId
+>>>>>>> pr-local-swagger
   title: string
   price: string
   features: string[]
   cta: string
 <<<<<<< HEAD
+<<<<<<< HEAD
 }
 
 export interface FAQ {
 =======
+=======
+>>>>>>> pr-local-swagger
   badge?: 'Best Value' | 'Popular' | null
 }
 
 export type FAQ = {
+<<<<<<< HEAD
 >>>>>>> origin/codex/optimize-my-page-zy1m9v
+=======
+>>>>>>> pr-local-swagger
   question: string
   answer: string
 }

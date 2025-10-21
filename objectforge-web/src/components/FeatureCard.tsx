@@ -1,18 +1,25 @@
 import { Link } from 'react-router-dom'
 import NewBadge from './NewBadge'
 <<<<<<< HEAD
+<<<<<<< HEAD
 import type { Feature } from '../lib/types'
 =======
 import Tooltip from './Tooltip'
 import type { Feature } from '../lib/types'
 import { isFeatureNew } from '../lib/utils'
 >>>>>>> origin/codex/optimize-my-page-zy1m9v
+=======
+import Tooltip from './Tooltip'
+import type { Feature } from '../lib/types'
+import { isFeatureNew } from '../lib/utils'
+>>>>>>> pr-local-swagger
 
 interface Props {
   feature: Feature
 }
 
 export default function FeatureCard({ feature }: Props) {
+<<<<<<< HEAD
 <<<<<<< HEAD
   return (
     <Link
@@ -27,6 +34,8 @@ export default function FeatureCard({ feature }: Props) {
     </Link>
   )
 =======
+=======
+>>>>>>> pr-local-swagger
   const comingSoon = feature.availability === 'coming_soon'
   const content = (
     <div
@@ -46,5 +55,8 @@ export default function FeatureCard({ feature }: Props) {
     <Link to={`/features/${feature.slug}`}>{content}</Link>
   )
   return body
+<<<<<<< HEAD
 >>>>>>> origin/codex/optimize-my-page-zy1m9v
+=======
+>>>>>>> pr-local-swagger
 }

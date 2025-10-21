@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { useCallback, useEffect, useRef } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 
@@ -41,6 +42,11 @@ import { useEffect, useRef, useState } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 
 const API_BASE = import.meta.env.VITE_API_BASE || '/api'
+=======
+import { useEffect, useRef, useState } from 'react'
+import useEmblaCarousel from 'embla-carousel-react'
+import http from '../lib/http'
+>>>>>>> pr-local-swagger
 
 type Review = { id:string; user:string; avatar?:string|null; rating:number; content:string; country?:string }
 
@@ -72,7 +78,25 @@ export default function Reviews() {
   const timer = useRef<number | null>(null)
 
   useEffect(() => {
+<<<<<<< HEAD
     fetch(`${API_BASE}/reviews`).then(r => r.json()).then(setList).catch(() => setList([]))
+=======
+    let cancelled = false
+    const load = async () => {
+      try {
+        const { data } = await http.get<Review[]>('/reviews', {
+          headers: { 'Cache-Control': 'no-store', 'X-Skip-Toast': '1' },
+        })
+        if (!cancelled) setList(data)
+      } catch {
+        if (!cancelled) setList([])
+      }
+    }
+    load()
+    return () => {
+      cancelled = true
+    }
+>>>>>>> pr-local-swagger
   }, [])
 
   useEffect(() => {
@@ -96,21 +120,30 @@ export default function Reviews() {
           {list.map(r => (
             <div className={slideClass} key={r.id}>
               <ReviewCard r={r} />
+<<<<<<< HEAD
 >>>>>>> origin/codex/optimize-my-page-zy1m9v
+=======
+>>>>>>> pr-local-swagger
             </div>
           ))}
         </div>
       </div>
+<<<<<<< HEAD
 <<<<<<< HEAD
     </div>
   )
 export default function Reviews() {
   return <div className="p-4">Reviews</div>
 =======
+=======
+>>>>>>> pr-local-swagger
       {list.length === 0 && (
         <div className="text-sm text-fg-2">暂无数据</div>
       )}
     </div>
   )
 }
+<<<<<<< HEAD
 >>>>>>> origin/codex/optimize-my-page-zy1m9v
+=======
+>>>>>>> pr-local-swagger

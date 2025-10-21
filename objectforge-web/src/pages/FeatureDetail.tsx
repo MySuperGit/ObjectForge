@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import PhotoAlbum, { Photo, RenderPhotoProps } from 'react-photo-album'
@@ -83,13 +84,19 @@ export default function FeatureDetail() {
           slides={samplePhotos.map((p) => ({ src: p.src }))}
         />
 =======
+=======
+>>>>>>> pr-local-swagger
 import { useEffect, useMemo, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import Lightbox from 'yet-another-react-lightbox'
 import 'yet-another-react-lightbox/styles.css'
+<<<<<<< HEAD
 
 const API_BASE = import.meta.env.VITE_API_BASE || '/api'
+=======
+import http from '../lib/http'
+>>>>>>> pr-local-swagger
 
 type GItem = { id: string; thumb: string; full: string; tags?: string[]; author?: string }
 
@@ -102,7 +109,25 @@ export default function FeatureDetail() {
   const [index, setIndex] = useState(0)
 
   useEffect(() => {
+<<<<<<< HEAD
     fetch(`${API_BASE}/gallery`).then(r => r.json()).then(setGallery).catch(()=>setGallery([]))
+=======
+    let cancelled = false
+    const load = async () => {
+      try {
+        const { data } = await http.get<GItem[]>('/gallery', {
+          headers: { 'Cache-Control': 'no-store', 'X-Skip-Toast': '1' },
+        })
+        if (!cancelled) setGallery(data)
+      } catch {
+        if (!cancelled) setGallery([])
+      }
+    }
+    load()
+    return () => {
+      cancelled = true
+    }
+>>>>>>> pr-local-swagger
   }, [])
 
   const slides = useMemo(() => gallery.map(g => ({ src: g.full })), [gallery])
@@ -168,11 +193,15 @@ export default function FeatureDetail() {
         </div>
 
         <Lightbox open={open} close={() => setOpen(false)} slides={slides} index={index} carousel={{ finite: false }} />
+<<<<<<< HEAD
 >>>>>>> origin/codex/optimize-my-page-zy1m9v
+=======
+>>>>>>> pr-local-swagger
       </div>
     </div>
   )
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 function ImageWrapper({ photo, renderDefaultPhoto, wrapperStyle }: RenderPhotoProps) {
@@ -187,3 +216,5 @@ function ImageWrapper({ photo, renderDefaultPhoto, wrapperStyle }: RenderPhotoPr
 }
 =======
 >>>>>>> origin/codex/optimize-my-page-zy1m9v
+=======
+>>>>>>> pr-local-swagger

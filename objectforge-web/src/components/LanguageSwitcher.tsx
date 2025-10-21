@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next'
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { useUIStore } from '../store/ui'
 
 export default function LanguageSwitcher() {
@@ -19,6 +20,9 @@ export default function LanguageSwitcher() {
   )
 }
 =======
+=======
+import http from '../lib/http'
+>>>>>>> pr-local-swagger
 
 export default function LanguageSwitcher() {
   const { i18n } = useTranslation()
@@ -28,12 +32,19 @@ export default function LanguageSwitcher() {
     localStorage.setItem('lang', lng)
     await i18n.changeLanguage(lng)
     try {
+<<<<<<< HEAD
       const API_BASE = import.meta.env.VITE_API_BASE || '/api'
       const r = await fetch(`${API_BASE}/i18n/${lng}.json`, { cache: 'no-store' })
       if (r.ok) {
         const json = await r.json()
         i18n.addResources(lng, 'translation', json)
       }
+=======
+      const response = await http.get(`/i18n/${lng}.json`, {
+        headers: { 'Cache-Control': 'no-store', 'X-Skip-Toast': '1' },
+      })
+      i18n.addResources(lng, 'translation', response.data)
+>>>>>>> pr-local-swagger
     } catch {}
   }
 
@@ -53,4 +64,7 @@ export default function LanguageSwitcher() {
   )
 }
 
+<<<<<<< HEAD
 >>>>>>> origin/codex/optimize-my-page-zy1m9v
+=======
+>>>>>>> pr-local-swagger

@@ -8,3 +8,7 @@ pydantic-settings==2.4.0
 Pillow==10.4.0
 orjson==3.10.7
 opencv-python-headless==4.10.0.84
+<<<<<<< HEAD
+=======
+swagger-ui-bundle==0.0.9
+>>>>>>> pr-local-swagger

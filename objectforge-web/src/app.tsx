@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import Header from './components/Header'
 import Sidebar from './components/Sidebar'
 import BackTop from './components/BackTop'
@@ -17,6 +18,8 @@ export default function App() {
 }
 
 =======
+=======
+>>>>>>> pr-local-swagger
 import { Suspense } from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { QueryClientProvider } from '@tanstack/react-query'
@@ -60,4 +63,7 @@ export default function App() {
     </Suspense>
   )
 }
+<<<<<<< HEAD
 >>>>>>> origin/codex/optimize-my-page-zy1m9v
+=======
+>>>>>>> pr-local-swagger

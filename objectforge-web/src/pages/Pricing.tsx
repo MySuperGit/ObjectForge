@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { pricingPlans, faqs } from '../lib/pricing.mock'
 import {
   Accordion,
@@ -45,6 +46,8 @@ export default function Pricing() {
 export default function Pricing() {
   return <div className="p-4">Pricing</div>
 =======
+=======
+>>>>>>> pr-local-swagger
 import { useEffect, useMemo, useState } from 'react'
 import { usePricing } from '../lib/api'
 import PricingCard from '../components/PricingCard'
@@ -103,5 +106,8 @@ export default function Pricing() {
       </section>
     </div>
   )
+<<<<<<< HEAD
 >>>>>>> origin/codex/optimize-my-page-zy1m9v
+=======
+>>>>>>> pr-local-swagger
 }

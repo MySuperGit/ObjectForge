@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { useState } from 'react'
 import Masonry from 'react-masonry-css'
 import Lightbox from 'yet-another-react-lightbox'
@@ -62,13 +63,19 @@ export default function Plaza() {
             {t.label}
           </button>
 =======
+=======
+>>>>>>> pr-local-swagger
 import { useEffect, useMemo, useState } from 'react'
 import Masonry from 'react-masonry-css'
 import Lightbox from 'yet-another-react-lightbox'
 import 'yet-another-react-lightbox/styles.css'
 import { useAppear } from '../hooks/useAppear'
+<<<<<<< HEAD
 
 const API_BASE = import.meta.env.VITE_API_BASE || '/api'
+=======
+import http from '../lib/http'
+>>>>>>> pr-local-swagger
 type Item = { id:string; thumb:string; full:string; tags?:string[]; author?:string }
 
 const TABS = ['图库','灵感','热门','节日','技术'] as const
@@ -89,7 +96,25 @@ export default function Plaza() {
   const [index, setIndex] = useState(0)
 
   useEffect(() => {
+<<<<<<< HEAD
     fetch(`${API_BASE}/gallery`).then(r => r.json()).then(setList).catch(() => setList([]))
+=======
+    let cancelled = false
+    const load = async () => {
+      try {
+        const { data } = await http.get<Item[]>('/gallery', {
+          headers: { 'Cache-Control': 'no-store', 'X-Skip-Toast': '1' },
+        })
+        if (!cancelled) setList(data)
+      } catch {
+        if (!cancelled) setList([])
+      }
+    }
+    load()
+    return () => {
+      cancelled = true
+    }
+>>>>>>> pr-local-swagger
   }, [])
 
   const filtered = useMemo(() => {
@@ -108,11 +133,15 @@ export default function Plaza() {
           <button key={t}
             className={`px-3 py-1.5 rounded-xl text-sm border ${t===tab ? 'bg-brand text-fg-white border-transparent' : 'bg-bg-white border-bg-9'}`}
             onClick={() => setTab(t)}>{t}</button>
+<<<<<<< HEAD
 >>>>>>> origin/codex/optimize-my-page-zy1m9v
+=======
+>>>>>>> pr-local-swagger
         ))}
       </div>
 
       <Masonry
+<<<<<<< HEAD
 <<<<<<< HEAD
         breakpointCols={breakpointColumns}
         className="flex -ml-4 w-auto"
@@ -144,6 +173,8 @@ export default function Plaza() {
   )
 }
 =======
+=======
+>>>>>>> pr-local-swagger
         breakpointCols={breakpointCols}
         className="flex gap-4"
         columnClassName="space-y-4"
@@ -171,4 +202,7 @@ function PlazaCard({ it, onClick }: { it: Item; onClick: () => void }) {
     </button>
   )
 }
+<<<<<<< HEAD
 >>>>>>> origin/codex/optimize-my-page-zy1m9v
+=======
+>>>>>>> pr-local-swagger

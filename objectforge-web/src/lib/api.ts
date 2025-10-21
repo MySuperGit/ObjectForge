@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 export const api = {
   get: (url: string, options?: RequestInit) =>
     fetch(`/api${url}`, options).then((r) => r.json()),
@@ -40,6 +41,24 @@ export async function fetchFeatures(): Promise<Feature[]> {
   const r = await fetch(`${API_BASE}/features`, { cache: 'no-store' })
   if (!r.ok) throw new Error('Failed to load features')
   return r.json()
+=======
+import { useQuery } from '@tanstack/react-query'
+import http from './http'
+import type { Feature, Plan } from './types'
+
+export async function removeBg(file: File) {
+  const fd = new FormData()
+  fd.append('image_file', file)
+  const response = await http.post('/v1/bg/remove', fd, { responseType: 'blob' })
+  return response.data
+}
+
+export async function fetchFeatures(): Promise<Feature[]> {
+  const response = await http.get<Feature[]>('/features', {
+    headers: { 'Cache-Control': 'no-store' },
+  })
+  return response.data
+>>>>>>> pr-local-swagger
 }
 
 export function useFeatures() {
@@ -47,14 +66,25 @@ export function useFeatures() {
 }
 
 export async function fetchPricing(): Promise<Plan[]> {
+<<<<<<< HEAD
   const r = await fetch(`${API_BASE}/pricing`, { cache: 'no-store' })
   if (!r.ok) throw new Error('Failed to load pricing')
   return r.json()
+=======
+  const response = await http.get<Plan[]>('/pricing', {
+    headers: { 'Cache-Control': 'no-store' },
+  })
+  return response.data
+>>>>>>> pr-local-swagger
 }
 
 export function usePricing() {
   return useQuery({ queryKey: ['pricing'], queryFn: fetchPricing, staleTime: 60_000 })
 }
 
+<<<<<<< HEAD
 export const api = { get, removeBg }
 >>>>>>> origin/codex/optimize-my-page-zy1m9v
+=======
+export const api = { removeBg }
+>>>>>>> pr-local-swagger

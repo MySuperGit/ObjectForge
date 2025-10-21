@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 <<<<<<< HEAD
+<<<<<<< HEAD
 import useScrollDir from './useScrollDir'
 import useIdle from './useIdle'
 
@@ -42,6 +43,8 @@ export default function useHeaderReveal() {
 }
 
 =======
+=======
+>>>>>>> pr-local-swagger
 
 export function useHeaderReveal() {
   const [visible, setVisible] = useState(true)
@@ -95,4 +98,7 @@ export function useHeaderReveal() {
 }
 
 export default useHeaderReveal
+<<<<<<< HEAD
 >>>>>>> origin/codex/optimize-my-page-zy1m9v
+=======
+>>>>>>> pr-local-swagger

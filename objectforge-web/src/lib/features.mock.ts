@@ -3,6 +3,7 @@ import { Feature } from './types'
 export const mockFeatures: Feature[] = [
   {
 <<<<<<< HEAD
+<<<<<<< HEAD
     id: 1,
     title: 'Feature A',
     description: 'Description A',
@@ -21,6 +22,8 @@ export const mockFeatures: Feature[] = [
     description: 'Description C',
     slug: 'feature-c'
 =======
+=======
+>>>>>>> pr-local-swagger
     id: 'bg-remove',
     title: 'Background Remove',
     slug: 'remove-bg',
@@ -42,6 +45,9 @@ export const mockFeatures: Feature[] = [
     tags: ['技术'],
     isNew: true,
     newBadgeUntil: '2026-06-01'
+<<<<<<< HEAD
 >>>>>>> origin/codex/optimize-my-page-zy1m9v
+=======
+>>>>>>> pr-local-swagger
   }
 ]

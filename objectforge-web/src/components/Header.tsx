@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { useTranslation } from 'react-i18next'
 import * as Tooltip from '@radix-ui/react-tooltip'
 import useHeaderReveal from '../hooks/useHeaderReveal'
@@ -73,6 +74,8 @@ export default function Header() {
           <div style={{ display: 'none' }} />
           <div style={{ display: 'none' }} />
 =======
+=======
+>>>>>>> pr-local-swagger
 import { Link, useNavigate } from 'react-router-dom'
 import { useHeaderReveal } from '../hooks/useHeaderReveal'
 import { useFeatures } from '../lib/api'
@@ -151,13 +154,19 @@ export default function Header() {
           <Link to="/login" className="btn-brand text-sm px-3 py-1">
             Login
           </Link>
+<<<<<<< HEAD
 >>>>>>> origin/codex/optimize-my-page-zy1m9v
+=======
+>>>>>>> pr-local-swagger
         </div>
       </div>
     </header>
   )
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> origin/codex/optimize-my-page-zy1m9v
+=======
+>>>>>>> pr-local-swagger
